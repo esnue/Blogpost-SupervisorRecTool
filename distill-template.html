@@ -20,18 +20,19 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -51,7 +52,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
@@ -86,78 +87,81 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--radix_placeholder_meta_tags-->
   <title>Thesis Supervisor Recommendation Tool</title>
-
-  <meta property="description" itemprop="description" content="We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors&#39; research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity."/>
-
+  
+  <meta property="description" itemprop="description" content="Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers."/>
+  
   <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
-
+  
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2021-05-03"/>
   <meta property="article:created" itemprop="dateCreated" content="2021-05-03"/>
   <meta name="article:author" content="Lena Wagner"/>
   <meta name="article:author" content="Ba Linh Le"/>
-
+  
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Thesis Supervisor Recommendation Tool"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors&#39; research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity."/>
+  <meta property="og:description" content="Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers."/>
   <meta property="og:locale" content="en_US"/>
-
+  
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Thesis Supervisor Recommendation Tool"/>
-  <meta property="twitter:description" content="We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors&#39; research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity."/>
-
+  <meta property="twitter:description" content="Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers."/>
+  
   <!--/radix_placeholder_meta_tags-->
   
+  <meta name="citation_reference" content="citation_title=Pre-training is a hot topic: Contextualized document embeddings improve topic coherence;citation_publication_date=2020;citation_author=Federico Bianchi;citation_author=Silvia Terragni;citation_author=Dirk Hovy"/>
+  <meta name="citation_reference" content="citation_title=The toronto paper matching system: An automated paper-reviewer assignment system;citation_publication_date=2013;citation_author=Laurent Charlin;citation_author=Richard Zemel"/>
+  <meta name="citation_reference" content="citation_title=BERTopic: Leveraging bert and c-tf-idf to create easily interpretable topics.;citation_publication_date=2020;citation_publisher=Zenodo;citation_doi=10.5281/zenodo.4381785;citation_author=Maarten Grootendorst"/>
   <!--radix_placeholder_rmarkdown_metadata-->
-
+  
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","creative_commons","repository_url","output","preview","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Thesis Supervisor Recommendation Tool"]},{"type":"character","attributes":{},"value":["We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors' research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Lena Wagner"]},{"type":"NULL"}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ba Linh Le"]}]}]},{"type":"character","attributes":{},"value":["2021-05-03"]},{"type":"character","attributes":{},"value":["Natural Language Processing"]},{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["https://github.com/esnue/ThesisAllocationSystem"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["figures/CTM.png"]},{"type":"character","attributes":{},"value":["bibliography.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","creative_commons","repository_url","output","preview","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Thesis Supervisor Recommendation Tool"]},{"type":"character","attributes":{},"value":["Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Lena Wagner"]},{"type":"NULL"}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ba Linh Le"]}]}]},{"type":"character","attributes":{},"value":["2021-05-03"]},{"type":"character","attributes":{},"value":["Natural Language Processing"]},{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["https://github.com/esnue/ThesisAllocationSystem"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["figures/CTM.png"]},{"type":"character","attributes":{},"value":["bibliography.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["bibliography.bib","distill-template_files/anchor-4.2.2/anchor.min.js","distill-template_files/bowser-1.9.3/bowser.min.js","distill-template_files/distill-2.2.21/template.v2.js","distill-template_files/header-attrs-2.6/header-attrs.js","distill-template_files/jquery-1.11.3/jquery.min.js","distill-template_files/popper-2.6.0/popper.min.js","distill-template_files/tippy-6.2.7/tippy-bundle.umd.min.js","distill-template_files/tippy-6.2.7/tippy-light-border.css","distill-template_files/tippy-6.2.7/tippy.css","distill-template_files/tippy-6.2.7/tippy.umd.min.js","distill-template_files/webcomponents-2.0.0/webcomponents.js","figures/CTM.png","figures/topic-dist.png","figures/topic-prof.png","figures/topic13.png","figures/trainloss.png"]}
+  {"type":"character","attributes":{},"value":["bibliography.bib","distill-template_files/anchor-4.2.2/anchor.min.js","distill-template_files/bowser-1.9.3/bowser.min.js","distill-template_files/distill-2.2.21/template.v2.js","distill-template_files/header-attrs-2.6/header-attrs.js","distill-template_files/jquery-1.11.3/jquery.min.js","distill-template_files/popper-2.6.0/popper.min.js","distill-template_files/tippy-6.2.7/tippy-bundle.umd.min.js","distill-template_files/tippy-6.2.7/tippy-light-border.css","distill-template_files/tippy-6.2.7/tippy.css","distill-template_files/tippy-6.2.7/tippy.umd.min.js","distill-template_files/webcomponents-2.0.0/webcomponents.js","figures/bow.png","figures/CTM.png","figures/lda.png","figures/meme1.jpg","figures/topic-dist.png","figures/topic-prof.png","figures/topic13.png","figures/trainloss.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
-
+  
   <style type="text/css">
-
+  
   body {
     background-color: white;
   }
-
+  
   .pandoc-table {
     width: 100%;
   }
-
+  
   .pandoc-table>caption {
     margin-bottom: 10px;
   }
-
+  
   .pandoc-table th:not([align]) {
     text-align: left;
   }
-
+  
   .pagedtable-footer {
     font-size: 15px;
   }
-
+  
   d-byline .byline {
     grid-template-columns: 2fr 2fr;
   }
-
+  
   d-byline .byline h3 {
     margin-block-start: 1.5em;
   }
-
+  
   d-byline .byline .authors-affiliations h3 {
     margin-block-start: 0.5em;
   }
-
+  
   .authors-affiliations .orcid-id {
     width: 16px;
     height:16px;
@@ -166,12 +170,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     vertical-align: middle;
     padding-bottom: 2px;
   }
-
+  
   d-title .dt-tags {
     margin-top: 1em;
     grid-column: text;
   }
-
+  
   .dt-tags .dt-tag {
     text-decoration: none;
     display: inline-block;
@@ -185,24 +189,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-transform: uppercase;
     font-weight: 500;
   }
-
+  
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
   }
-
+  
   .html-widget {
     margin-bottom: 2.0em;
   }
-
+  
   .l-screen-inset {
     padding-right: 16px;
   }
-
+  
   .l-screen .caption {
     margin-left: 10px;
   }
-
+  
   .shaded {
     background: rgb(247, 247, 247);
     padding-top: 20px;
@@ -210,75 +214,75 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-
+  
   .shaded .html-widget {
     margin-bottom: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
-
+  
   .shaded .shaded-content {
     background: white;
   }
-
+  
   .text-output {
     margin-top: 0;
     line-height: 1.5em;
   }
-
+  
   .hidden {
     display: none !important;
   }
-
+  
   d-article {
     padding-top: 2.5rem;
     padding-bottom: 30px;
   }
-
+  
   d-appendix {
     padding-top: 30px;
   }
-
+  
   d-article>p>img {
     width: 100%;
   }
-
+  
   d-article h2 {
     margin: 1rem 0 1.5rem 0;
   }
-
+  
   d-article h3 {
     margin-top: 1.5rem;
   }
-
+  
   d-article iframe {
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 2.0em;
     width: 100%;
   }
-
+  
   /* Tweak code blocks */
-
+  
   d-article div.sourceCode code,
   d-article pre code {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   }
-
+  
   d-article pre,
   d-article div.sourceCode,
   d-article div.sourceCode pre {
     overflow: auto;
   }
-
+  
   d-article div.sourceCode {
     background-color: white;
   }
-
+  
   d-article div.sourceCode pre {
     padding-left: 10px;
     font-size: 12px;
     border-left: 2px solid rgba(0,0,0,0.1);
   }
-
+  
   d-article pre {
     font-size: 12px;
     color: black;
@@ -290,50 +294,50 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-
+  
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-
+  
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
   }
-
+  
   d-article pre a {
     border-bottom: none;
   }
-
+  
   d-article pre a:hover {
     border-bottom: none;
     text-decoration: underline;
   }
-
+  
   d-article details {
     grid-column: text;
     margin-bottom: 0.8em;
   }
-
+  
   @media(min-width: 768px) {
-
+  
   d-article pre,
   d-article div.sourceCode,
   d-article div.sourceCode pre {
     overflow: visible !important;
   }
-
+  
   d-article div.sourceCode pre {
     padding-left: 18px;
     font-size: 14px;
   }
-
+  
   d-article pre {
     font-size: 14px;
   }
-
+  
   }
-
+  
   figure img.external {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -341,9 +345,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding: 18px;
     box-sizing: border-box;
   }
-
+  
   /* CSS for d-contents */
-
+  
   .d-contents {
     grid-column: text;
     color: rgba(0,0,0,0.8);
@@ -355,7 +359,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding-left: 0.25em;
     justify-self: start;
   }
-
+  
   @media(min-width: 1000px) {
     .d-contents.d-contents-float {
       height: 0;
@@ -366,82 +370,82 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       padding-left: 2em;
     }
   }
-
+  
   .d-contents nav h3 {
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 1em;
   }
-
+  
   .d-contents li {
     list-style-type: none
   }
-
+  
   .d-contents nav > ul {
     padding-left: 0;
   }
-
+  
   .d-contents ul {
     padding-left: 1em
   }
-
+  
   .d-contents nav ul li {
     margin-top: 0.6em;
     margin-bottom: 0.2em;
   }
-
+  
   .d-contents nav a {
     font-size: 13px;
     border-bottom: none;
     text-decoration: none
     color: rgba(0, 0, 0, 0.8);
   }
-
+  
   .d-contents nav a:hover {
     text-decoration: underline solid rgba(0, 0, 0, 0.6)
   }
-
+  
   .d-contents nav > ul > li > a {
     font-weight: 600;
   }
-
+  
   .d-contents nav > ul > li > ul {
     font-weight: inherit;
   }
-
+  
   .d-contents nav > ul > li > ul > li {
     margin-top: 0.2em;
   }
-
-
+  
+  
   .d-contents nav ul {
     margin-top: 0;
     margin-bottom: 0.25em;
   }
-
+  
   .d-article-with-toc h2:nth-child(2) {
     margin-top: 0;
   }
-
-
+  
+  
   /* Figure */
-
+  
   .figure {
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
   }
-
+  
   .figure img {
     width: 100%;
   }
-
+  
   .figure .caption {
     color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
     line-height: 1.5em;
   }
-
+  
   .figure img.external {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -449,42 +453,42 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding: 18px;
     box-sizing: border-box;
   }
-
+  
   .figure .caption a {
     color: rgba(0, 0, 0, 0.6);
   }
-
+  
   .figure .caption b,
   .figure .caption strong, {
     font-weight: 600;
     color: rgba(0, 0, 0, 1.0);
   }
-
+  
   /* Citations */
-
+  
   d-article .citation {
     color: inherit;
     cursor: inherit;
   }
-
+  
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
   }
-
+  
   /* Citation hover box */
-
+  
   .tippy-box[data-theme~=light-border] {
     background-color: rgba(250, 250, 250, 0.95);
   }
-
+  
   .tippy-content > p {
     margin-bottom: 0;
     padding: 2px;
   }
-
-
+  
+  
   /* Tweak 1000px media break to show more text */
-
+  
   @media(min-width: 1000px) {
     .base-grid,
     distill-header,
@@ -500,11 +504,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
       grid-column-gap: 16px;
     }
-
+  
     .grid {
       grid-column-gap: 16px;
     }
-
+  
     d-article {
       font-size: 1.06rem;
       line-height: 1.7em;
@@ -513,7 +517,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       font-size: 13px;
     }
   }
-
+  
   @media(min-width: 1180px) {
     .base-grid,
     distill-header,
@@ -529,16 +533,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
       grid-column-gap: 32px;
     }
-
+  
     .grid {
       grid-column-gap: 32px;
     }
   }
-
-
+  
+  
   /* Get the citation styles for the appendix (not auto-injected on render since
      we do our own rendering of the citation appendix) */
-
+  
   d-appendix .citation-appendix,
   .d-appendix .citation-appendix {
     font-size: 11px;
@@ -555,9 +559,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-
+  
   /* Include appendix styles here so they can be overridden */
-
+  
   d-appendix {
     contain: layout style;
     font-size: 0.8em;
@@ -569,7 +573,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding-top: 60px;
     padding-bottom: 48px;
   }
-
+  
   d-appendix h3 {
     grid-column: page-start / text-start;
     font-size: 15px;
@@ -578,59 +582,59 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     margin-bottom: 0;
     color: rgba(0,0,0,0.65);
   }
-
+  
   d-appendix h3 + * {
     margin-top: 1em;
   }
-
+  
   d-appendix ol {
     padding: 0 0 0 15px;
   }
-
+  
   @media (min-width: 768px) {
     d-appendix ol {
       padding: 0 0 0 30px;
       margin-left: -30px;
     }
   }
-
+  
   d-appendix li {
     margin-bottom: 1em;
   }
-
+  
   d-appendix a {
     color: rgba(0, 0, 0, 0.6);
   }
-
+  
   d-appendix > * {
     grid-column: text;
   }
-
+  
   d-appendix > d-footnote-list,
   d-appendix > d-citation-list,
   d-appendix > distill-appendix {
     grid-column: screen;
   }
-
+  
   /* Include footnote styles here so they can be overridden */
-
+  
   d-footnote-list {
     contain: layout style;
   }
-
+  
   d-footnote-list > * {
     grid-column: text;
   }
-
+  
   d-footnote-list a.footnote-backlink {
     color: rgba(0,0,0,0.3);
     padding-left: 0.5em;
   }
-
-
-
+  
+  
+  
   /* Anchor.js */
-
+  
   .anchorjs-link {
     /*transition: all .25s linear; */
     text-decoration: none;
@@ -641,86 +645,86 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: none;
     border-bottom: none;
   }
-
+  
   /* Social footer */
-
+  
   .social_footer {
     margin-top: 30px;
     margin-bottom: 0;
     color: rgba(0,0,0,0.67);
   }
-
+  
   .disqus-comments {
     margin-right: 30px;
   }
-
+  
   .disqus-comment-count {
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
-
+  
   #disqus_thread {
     margin-top: 30px;
   }
-
+  
   .article-sharing a {
     border-bottom: none;
     margin-right: 8px;
   }
-
+  
   .article-sharing a:hover {
     border-bottom: none;
   }
-
+  
   .sidebar-section.subscribe {
     font-size: 12px;
     line-height: 1.6em;
   }
-
+  
   .subscribe p {
     margin-bottom: 0.5em;
   }
-
-
+  
+  
   .article-footer .subscribe {
     font-size: 15px;
     margin-top: 45px;
   }
-
-
+  
+  
   .sidebar-section.custom {
     font-size: 12px;
     line-height: 1.6em;
   }
-
+  
   .custom p {
     margin-bottom: 0.5em;
   }
-
+  
   /* Styles for listing layout (hide title) */
   .layout-listing d-title, .layout-listing .d-title {
     display: none;
   }
-
+  
   /* Styles for posts lists (not auto-injected) */
-
-
+  
+  
   .posts-with-sidebar {
     padding-left: 45px;
     padding-right: 45px;
   }
-
+  
   .posts-list .description h2,
   .posts-list .description p {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   }
-
+  
   .posts-list .description h2 {
     font-weight: 700;
     border-bottom: none;
     padding-bottom: 0;
   }
-
+  
   .posts-list h2.post-tag {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 12px;
@@ -729,7 +733,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     margin-top: 60px;
     margin-bottom: 24px;
   }
-
+  
   .posts-list .post-preview {
     text-decoration: none;
     overflow: hidden;
@@ -737,29 +741,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 24px 0;
   }
-
+  
   .post-preview-last {
     border-bottom: none !important;
   }
-
+  
   .posts-list .posts-list-caption {
     grid-column: screen;
     font-weight: 400;
   }
-
+  
   .posts-list .post-preview h2 {
     margin: 0 0 6px 0;
     line-height: 1.2em;
     font-style: normal;
     font-size: 24px;
   }
-
+  
   .posts-list .post-preview p {
     margin: 0 0 12px 0;
     line-height: 1.4em;
     font-size: 16px;
   }
-
+  
   .posts-list .post-preview .thumbnail {
     box-sizing: border-box;
     margin-bottom: 24px;
@@ -770,32 +774,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     width: 100%;
     display: block;
   }
-
+  
   .posts-list .metadata {
     font-size: 12px;
     line-height: 1.4em;
     margin-bottom: 18px;
   }
-
+  
   .posts-list .metadata > * {
     display: inline-block;
   }
-
+  
   .posts-list .metadata .publishedDate {
     margin-right: 2em;
   }
-
+  
   .posts-list .metadata .dt-authors {
     display: block;
     margin-top: 0.3em;
     margin-right: 2em;
   }
-
+  
   .posts-list .dt-tags {
     display: block;
     line-height: 1em;
   }
-
+  
   .posts-list .dt-tags .dt-tag {
     display: inline-block;
     color: rgba(0,0,0,0.6);
@@ -808,24 +812,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-transform: uppercase;
     font-weight: 500;
   }
-
+  
   .posts-list img {
     opacity: 1;
   }
-
+  
   .posts-list img[data-src] {
     opacity: 0;
   }
-
+  
   .posts-more {
     clear: both;
   }
-
-
+  
+  
   .posts-sidebar {
     font-size: 16px;
   }
-
+  
   .posts-sidebar h3 {
     font-size: 16px;
     margin-top: 0;
@@ -833,39 +837,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     font-weight: 400;
     text-transform: uppercase;
   }
-
+  
   .sidebar-section {
     margin-bottom: 30px;
   }
-
+  
   .categories ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-
+  
   .categories li {
     color: rgba(0, 0, 0, 0.8);
     margin-bottom: 0;
   }
-
+  
   .categories li>a {
     border-bottom: none;
   }
-
+  
   .categories li>a:hover {
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   }
-
+  
   .categories .active {
     font-weight: 600;
   }
-
+  
   .categories .category-count {
     color: rgba(0, 0, 0, 0.4);
   }
-
-
+  
+  
   @media(min-width: 768px) {
     .posts-list .post-preview h2 {
       font-size: 26px;
@@ -901,55 +905,55 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       padding-bottom: 24px;
     }
   }
-
-
+  
+  
   /* Improve display for browsers without grid (IE/Edge <= 15) */
-
+  
   .downlevel {
     line-height: 1.6em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
     margin: 0;
   }
-
+  
   .downlevel .d-title {
     padding-top: 6rem;
     padding-bottom: 1.5rem;
   }
-
+  
   .downlevel .d-title h1 {
     font-size: 50px;
     font-weight: 700;
     line-height: 1.1em;
     margin: 0 0 0.5rem;
   }
-
+  
   .downlevel .d-title p {
     font-weight: 300;
     font-size: 1.2rem;
     line-height: 1.55em;
     margin-top: 0;
   }
-
+  
   .downlevel .d-byline {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
     font-size: 0.8rem;
     line-height: 1.8em;
   }
-
+  
   .downlevel .section-separator {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
-
+  
   .downlevel .d-article {
     font-size: 1.06rem;
     line-height: 1.7em;
     padding-top: 1rem;
     padding-bottom: 2rem;
   }
-
-
+  
+  
   .downlevel .d-appendix {
     padding-left: 0;
     padding-right: 0;
@@ -961,11 +965,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding-top: 40px;
     padding-bottom: 48px;
   }
-
+  
   .downlevel .footnotes ol {
     padding-left: 13px;
   }
-
+  
   .downlevel .base-grid,
   .downlevel .distill-header,
   .downlevel .d-title,
@@ -982,7 +986,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     padding-left: 40px;
     padding-right: 40px;
   }
-
+  
   @media(min-width: 768px) {
     .downlevel .base-grid,
     .downlevel .distill-header,
@@ -1002,14 +1006,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     max-width: 900px;
   }
   }
-
+  
   .downlevel pre code {
     display: block;
     border-left: 2px solid rgba(0, 0, 0, .1);
     padding: 0 0 0 20px;
     font-size: 14px;
   }
-
+  
   .downlevel code, .downlevel pre {
     color: black;
     background: none;
@@ -1020,27 +1024,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-
+  
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-
+  
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
   }
-
+  
   .downlevel .posts-list .post-preview {
     color: inherit;
   }
-
-
-
+  
+  
+  
   </style>
-
+  
   <script type="application/javascript">
-
+  
   function is_downlevel_browser() {
     if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
                                    window.navigator.userAgent)) {
@@ -1049,20 +1053,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       return window.load_distill_framework === undefined;
     }
   }
-
+  
   // show body when load is complete
   function on_load_complete() {
-
+  
     // add anchors
     if (window.anchors) {
       window.anchors.options.placement = 'left';
       window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
     }
-
-
+  
+  
     // set body to visible
     document.body.style.visibility = 'visible';
-
+  
     // force redraw for leaflet widgets
     if (window.HTMLWidgets) {
       var maps = window.HTMLWidgets.findAll(".leaflet");
@@ -1075,39 +1079,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
         });
       });
     }
-
+  
     // trigger 'shown' so htmlwidgets resize
     $('d-article').trigger('shown');
   }
-
+  
   function init_distill() {
-
+  
     init_common();
-
+  
     // create front matter
     var front_matter = $('<d-front-matter></d-front-matter>');
     $('#distill-front-matter').wrap(front_matter);
-
+  
     // create d-title
     $('.d-title').changeElementType('d-title');
-
+  
     // create d-byline
     var byline = $('<d-byline></d-byline>');
     $('.d-byline').replaceWith(byline);
-
+  
     // create d-article
     var article = $('<d-article></d-article>');
     $('.d-article').wrap(article).children().unwrap();
-
+  
     // move posts container into article
     $('.posts-container').appendTo($('d-article'));
-
+  
     // create d-appendix
     $('.d-appendix').changeElementType('d-appendix');
-
+  
     // flag indicating that we have appendix items
     var appendix = $('.appendix-bottom').children('h3').length > 0;
-
+  
     // replace footnotes with <d-footnote>
     $('.footnote-ref').each(function(i, val) {
       appendix = true;
@@ -1123,10 +1127,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     });
     // remove footnotes
     $('.footnotes').remove();
-
+  
     // move refs into #references-listing
     $('#references-listing').replaceWith($('#refs'));
-
+  
     $('h1.appendix, h2.appendix').each(function(i, val) {
       $(this).changeElementType('h3');
     });
@@ -1136,16 +1140,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       appendix = true;
       $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
     });
-
+  
     // show d-appendix if we have appendix content
     $("d-appendix").css('display', appendix ? 'grid' : 'none');
-
+  
     // localize layout chunks to just output
     $('.layout-chunk').each(function(i, val) {
-
+  
       // capture layout
       var layout = $(this).attr('data-layout');
-
+  
       // apply layout to markdown level block elements
       var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
@@ -1158,40 +1162,40 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           $(this).wrap(layout_div);
         }
       });
-
-
+  
+  
       // unwrap the layout-chunk div
       $(this).children().unwrap();
     });
-
+  
     // remove code block used to force  highlighting css
     $('.distill-force-highlighting-css').parent().remove();
-
+  
     // remove empty line numbers inserted by pandoc when using a
     // custom syntax highlighting theme
     $('code.sourceCode a:empty').remove();
-
+  
     // load distill framework
     load_distill_framework();
-
+  
     // wait for window.distillRunlevel == 4 to do post processing
     function distill_post_process() {
-
+  
       if (!window.distillRunlevel || window.distillRunlevel < 4)
         return;
-
+  
       // hide author/affiliations entirely if we have no authors
       var front_matter = JSON.parse($("#distill-front-matter").html());
       var have_authors = front_matter.authors && front_matter.authors.length > 0;
       if (!have_authors)
         $('d-byline').addClass('hidden');
-
+  
       // article with toc class
       $('.d-contents').parent().addClass('d-article-with-toc');
-
+  
       // strip links that point to #
       $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
-
+  
       // add orcid ids
       $('.authors-affiliations').find('.author').each(function(i, el) {
         var orcid_id = front_matter.authors[i].orcidID;
@@ -1206,12 +1210,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           $(this).append(a);
         }
       });
-
+  
       // hide elements of author/affiliations grid that have no value
       function hide_byline_column(caption) {
         $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
       }
-
+  
       // affiliations
       var have_affiliations = false;
       for (var i = 0; i<front_matter.authors.length; ++i) {
@@ -1223,11 +1227,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       }
       if (!have_affiliations)
         $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
-
+  
       // published date
       if (!front_matter.publishedDate)
         hide_byline_column("Published");
-
+  
       // document object identifier
       var doi = $('d-byline').find('h3:contains("DOI")');
       var doi_p = doi.next().empty();
@@ -1247,22 +1251,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
            .html(front_matter.doi)
            .appendTo(doi_p);
       }
-
+  
        // change plural form of authors/affiliations
       if (front_matter.authors.length === 1) {
         var grid = $('.authors-affiliations');
         grid.children('h3:contains("Authors")').text('Author');
         grid.children('h3:contains("Affiliations")').text('Affiliation');
       }
-
+  
       // remove d-appendix and d-footnote-list local styles
       $('d-appendix > style:first-child').remove();
       $('d-footnote-list > style:first-child').remove();
-
+  
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
-
+  
       // hoverable references
       $('span.citation[data-cites]').each(function() {
         var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
@@ -1276,39 +1280,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
-
+  
       // clear polling timer
       clearInterval(tid);
-
+  
       // show body now that everything is ready
       on_load_complete();
     }
-
+  
     var tid = setInterval(distill_post_process, 50);
     distill_post_process();
-
+  
   }
-
+  
   function init_downlevel() {
-
+  
     init_common();
-
+  
      // insert hr after d-title
     $('.d-title').after($('<hr class="section-separator"/>'));
-
+  
     // check if we have authors
     var front_matter = JSON.parse($("#distill-front-matter").html());
     var have_authors = front_matter.authors && front_matter.authors.length > 0;
-
+  
     // manage byline/border
     if (!have_authors)
       $('.d-byline').remove();
     $('.d-byline').after($('<hr class="section-separator"/>'));
     $('.d-byline a').remove();
-
+  
     // remove toc
     $('.d-contents').remove();
-
+  
     // move appendix elements
     $('h1.appendix, h2.appendix').each(function(i, val) {
       $(this).changeElementType('h3');
@@ -1316,62 +1320,62 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     $('h3.appendix').each(function(i, val) {
       $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
     });
-
-
+  
+  
     // inject headers into references and footnotes
     var refs_header = $('<h3></h3>');
     refs_header.text('References');
     $('#refs').prepend(refs_header);
-
+  
     var footnotes_header = $('<h3></h3');
     footnotes_header.text('Footnotes');
     $('.footnotes').children('hr').first().replaceWith(footnotes_header);
-
+  
     // move appendix-bottom entries to the bottom
     $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
     $('.appendix-bottom').remove();
-
+  
     // remove appendix if it's empty
     if ($('.d-appendix').children().length === 0)
       $('.d-appendix').remove();
-
+  
     // prepend separator above appendix
     $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
-
+  
     // trim code
     $('pre>code').each(function(i, val) {
       $(this).html($.trim($(this).html()));
     });
-
+  
     // move posts-container right before article
     $('.posts-container').insertBefore($('.d-article'));
-
+  
     $('body').addClass('downlevel');
-
+  
     on_load_complete();
   }
-
-
+  
+  
   function init_common() {
-
+  
     // jquery plugin to change element types
     (function($) {
       $.fn.changeElementType = function(newType) {
         var attrs = {};
-
+  
         $.each(this[0].attributes, function(idx, attr) {
           attrs[attr.nodeName] = attr.nodeValue;
         });
-
+  
         this.replaceWith(function() {
           return $("<" + newType + "/>", attrs).append($(this).contents());
         });
       };
     })(jQuery);
-
+  
     // prevent underline for linked images
     $('a > img').parent().css({'border-bottom' : 'none'});
-
+  
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
@@ -1383,35 +1387,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           var fig = $(this);
           fig.css('width', fig.attr('width') + 'px');
         });
-
+  
       }
     });
-
+  
     // auto-append index.html to post-preview links in file: protocol
     // and in rstudio ide preview
     $('.post-preview').each(function(i, val) {
       if (window.location.protocol === "file:")
         $(this).attr('href', $(this).attr('href') + "index.html");
     });
-
+  
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
         $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
-
+  
     // add class to pandoc style tables
     $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
     $('.kable-table').children('table').addClass('pandoc-table');
-
+  
     // add figcaption style to table captions
     $('caption').parent('table').addClass("figcaption");
-
+  
     // initialize posts list
     if (window.init_posts_list)
       window.init_posts_list();
-
+  
     // implmement disqus comment link
     $('.disqus-comment-count').click(function() {
       window.headroom_prevent_pin = true;
@@ -1425,18 +1429,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       }
     });
   }
-
+  
   document.addEventListener('DOMContentLoaded', function() {
     if (is_downlevel_browser())
       init_downlevel();
     else
       window.addEventListener('WebComponentsReady', init_distill);
   });
-
+  
   </script>
-
+  
   <!--/radix_placeholder_distill-->
-  <script src="distill-template_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="distill-template_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="distill-template_files/popper-2.6.0/popper.min.js"></script>
   <link href="distill-template_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1457,7 +1460,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Thesis Supervisor Recommendation Tool","description":"We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors' research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity.","authors":[{"author":"Lena Wagner","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Ba Linh Le","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-03T00:00:00.000+02:00","citationText":"Wagner & Le, 2021"}
+{"title":"Thesis Supervisor Recommendation Tool","description":"Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers.","authors":[{"author":"Lena Wagner","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Ba Linh Le","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-03T00:00:00.000+02:00","citationText":"Wagner & Le, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1473,7 +1476,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">Natural Language Processing</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p>We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors’ research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity.</p>
+<p>Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers.</p>
 </div>
 
 <div class="d-byline">
@@ -1486,25 +1489,76 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="abstract">Abstract</h2>
-<p>To tackle the challenge of finding a suitable supervisor for second-year graduate students’ master thesis research proposals at the Hertie School, we have built a tool that allows for a comprehensive, yet concise overview of the different areas of academic expertise covered by the school’s faculty members. Currently, students preferences for thesis supervisors can be assumed to be mostly based on very limited and selective information about research areas and methodologies available at the school, such as through personal experience with some of the professors or fellow students’ reports. However, the choice of the supervisor can impact both the progress and quality of a thesis as well as student’s work opportunities after graduation. We determine areas of academic expertise by identifying underlying topics in each supervisor’s body of academic publications, i.e. publicly available papers. Standard Latent Dirichlet Allocation (LDA) topic modelling often results in topics that do not achieve a high degree of coherence, especially when it comes to domain-specific vocabulary. Hence, we are proposing to leverage the power of Pre-trained Language Models (PLM) and neural topic models. Among the most promising state-of-the-art technologies do so is Contextual Topic Modeling (CTM) with pre-trained BERT sentence embedding (SBERT) to improve topic coherence and meaning across documents. While we find that embedded CTM is able to extract coherent topics from small data sets (<span class="math inline">\(n &lt; 900\)</span>) with longer text per document, it achieves limited results for shorter texts per document. Therefore, we concluded that our original plan to match two sets of documents based on topic similarity is not feasible within our project, but still presents an interesting avenue for further research.</p>
+<p>Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers. The outputs of the model will be available on a web application that aims to support students in their thesis supervisor selection. On the web application, students can get an accessible overview of all potential supervisors’ research fields to find the one that can best guide them substantively. The tool is especially recommended for students that have not been able to get familiar with the whole body of the faculty and would like to make sure their supervisor is the best fit for them. The CTM is most successful in identifying coherent topics on texts that entails proper sentences as opposed to bullet points and a higher word count than 200.</p>
 <h2 id="introduction-background">Introduction / Background</h2>
-<p>Each fall semester, Hertie students and administrative staff alike are faced with the challenging task of finding a suitable and available supervisor for the students’ master theses. The process starts with students handing in research proposals, in which they have to indicate three ranked preferences for potential supervisors. It can be assumed that these preferences are mostly based on very limited information on and/or semi-random clues about professors’ research areas, methodologies and thematic focus. While supervision plans issued by each of the 28 supervisors are available on Moodle, the process of manually downloading and exhaustively going through each of the document is likely to be both inefficient and tedious. It is therefore certainly a possibility that some students might not select a supervisor best-fitting to the topic, focus and research methodology of the their envisioned thesis. This is worrying because the choice of the supervisor is relevant to the progress and quality of a thesis, which in turn can determine a student’s work opportunities after graduation. Against this background, our project’s main goal is to increase the quality and efficiency of supervisor matching by developing a tool that provides a lucid and accessible overview over the wide range of fields of academic expertise in the school’s faculty body. Thereby, we hope to alleviate frictions in the choice process due to asymmetric information and imbalanced demand for more popular and well-known professors, coincidentally also delivering a valuable contribution to our school community. Initially, a text matching system based on document-level topic similarity was envisioned. As a text classification task, the Toronto Paper Matching System constitutes a similar application case <span class="citation" data-cites="charlin2013toronto">(<a href="#ref-charlin2013toronto" role="doc-biblioref">Charlin and Zemel 2013</a>)</span>. This approach has been proven to be unfeasible due to data quality constraints for our particular project setting. As a consequence, the project’s focus remains on topic modeling. To depict the areas of academic expertise that are covered by Hertie School’s faculty members, we decided to employ topic modeling on their respective body of published academic work. However, such a retrospective approach has an important inherent limitation: it cannot show most recent advancements that deviate from a professor’s past research. However, given that academic careers are usually constructed to deepen expertise in and expand knowledge about subject-specific areas that remain fairly stable across the years, this limitation can be neglected. Topic modeling in general is a widely used tool and among the most useful ways to understand text on the document level. However, it has so far been missing out of the powerful benefits that pre-trained language models have to offer, even though using external knowledge on semantic relationships in text have been proven to increase topic coherence. Higher coherence is easier to interpret by humans and is considered more meaningful, hence more desirable in a setting where model outputs are meant to inform human users in their decision-making. Contextualized Topic Models (CTM) addresses this gap by adding contextual information to neural topic models, thereby significantly improving coherence with competitive results in topic diversity <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">Bianchi, Terragni, and Hovy 2020</a>)</span>. We apply this innovative approach and achieve excellent results even with a very small sample (<span class="math inline">\(n&lt;900\)</span>), but unsatisfactory results for very short texts characterized by varying writing styles, quality and incomplete sentences, e.g. bullet points. Lastly, it should be noted that our projects expands the work done by last semester’s students from the class “Python for Data Scientists,” who built a simple LDA model and similarity index based on user input.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>If you’ve happened to come across this website, you’re either a student that is taking the NLP class at Hertie and would like to get a great example of a project or you’re a 2nd year student anxious to get started on the MA thesis road. In any case, you’ve come to the right place.</p>
+<p>This project was inspired by the recurring challenge in the fall semester, when Hertie students and administrative staff alike have to match suitable and available supervisors to students’ master theses. The task is - as you can probably imagine - very laborious. As a Hertie student, you are required to indicate three preferences of supervising professors in decreasing order of rank. But what if you have no idea? You’ve probably only met 5 professors, but there are 28 options out there! The agony. Worst of all? There is no good overview on the Moodle platform: you’re forced to manually and individually download the supervision plan.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="figures/meme1.jpg" alt="Source: Own work." width="70%" />
+<p class="caption">
+Figure 1: Source: Own work.
+</p>
+</div>
+</div>
+<p>But don’t lose hope yet because your seniors are here to come to your aid! We know that the choice of the supervisor matters. It certainly is relevant to the progress and quality of your thesis, potentially even to your work opportunities after graduation! That is why we have developed this tool. </p>
+<p>The tool provides a lucid and accessible overview over the wide range of fields of academic expertise in the school’s faculty body. It expands the work of last semester’s student from the class “Python for Data Scientists”, who built a simple LDA model and similarity index based on user input.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Sounds like a mouthful? Is a mouthful. No worries, everything is going to be explained below. Just stay with us!</p>
+<p>However, in case you are familar with these terms and totally know what’s going on, here is the <strong>TDLR</strong>: LDA’s biggest advantage, Bag-of-Words, turns out to be its deficiency. CTM addresses the lack of contextual information capture by integrating word embedding. <span class="citation" data-cites="bianchi2020pre">(Bianchi, Terragni, and Hovy <a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span> CTM is a fairly new model, but it’s proven to be super successful in our case!</p>
 <h2 id="related-work">Related Work</h2>
-<p>The challenge of topic modeling usually lies in the unsupervised detection of underlying topics in documents and the correct identification of patterns to match documents to topics. As a machine learning technique, Latent Dirichlet Allocation (LDA) is a popular probabilistic algorithm used for topic modeling. The Toronto Paper Matching System is also based on the LDA machine learning model. The Toronto Paper Matching System matches papers to initial expertise scores based on reviewers’ publications and cross-checks these matched with elicited scores based on reviewers’ self-assessed expertise. Operating on a Bag-of-Words (BoW) representation, the Toronto Paper Matching System is able to do unsupervised classification of documents <span class="citation" data-cites="charlin2013toronto">(<a href="#ref-charlin2013toronto" role="doc-biblioref">Charlin and Zemel 2013</a>)</span>. However, if each document is considered a collection of words, the goal is to identify discriminative words for the document. The structure of the document itself, i.e. the grammatical role and the order of words, is not relevant to this model. Because the goal is to identify words distinctive to the document, certain words that do not carry any meaning for that purpose are removed as “stop words” before running the model. Both of these functionalities constitute the main limitation of LDA: it is unable to comprehend the semantics and context of words.</p>
+<p>We’ve been throwing around some fancy terms making us appear real clever, but that is not the goal of this blog post. We want you to understand what’s going on! After all, what is a teacher’s worth if the students don’t get it?</p>
+<p>The general challenge of topic modeling is the detection of underlying topics in documents and the correct identification of patterns to match documents to topics. Documents describes the text unit of interest such as individual Twitter tweets, mails, papers, reports, etc. So the goal is to be able to identify topics and to create a pattern that is able to match unseen documents to established topics.</p>
+<p>Let’s say you’ve been tasked with sorting post. Super tedious work. As you begin to go through each of the letters, you identify categories of letters: bills, advertisement, reminders and notifications of changes. The first pile is done, now on to the next pile we go. However, this pile is somewhat different from the first pile. However, you’re clever and confident that you can clearly match the unseen letters to the categories (topics) you’ve established in the first pile. Get it?</p>
+<p>But how does a machine even comprehend text? Easy: by numbers! Everything is turned into numbers. We call that step “encoding”. Fancy term there! Now that we’ve established the foundations, let’s get into the nitty-gritty details!</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="figures/bow.png" alt="Source: https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971" width="70%" />
+<p class="caption">
+Figure 2: Source: <a href="https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971" class="uri">https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971</a>
+</p>
+</div>
+</div>
+<p>Latent Dirichlet Allocation (LDA) is a popular machine learning probabilistic algorithm used for topic modeling. The figure below illustrates how it basically works. It discovers topics and then matches these topics to documents. In the end, you get a table of documents with their proportional share to each topics. Going back to our mailbox example: let’s say the first letter (document) is advertisement but there is also a bit of a reminder. Ideally, LDA would return that the document of interest is 60% advertisement and 39% reminder, 0.5% bill and 0.5% notification of changes. Why 0.5%? That is how probability works! You can never fully rule out that something happens, you just know that it is veeeeery unlikely to happen.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="figures/lda.png" alt="Source: https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html" width="70%" />
+<p class="caption">
+Figure 3: Source: <a href="https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html" class="uri">https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html</a>
+</p>
+</div>
+</div>
+<p>The challenge of topic modeling usually lies in the unsupervised detection of underlying topics in documents and the correct identification of patterns to match documents to topics. As a machine learning technique, Latent Dirichlet Allocation (LDA) is a popular probabilistic algorithm used for topic modeling. The Toronto Paper Matching System is also based on the LDA machine learning model. The Toronto Paper Matching System matches papers to initial expertise scores based on reviewers’ publications and cross-checks these matched with elicited scores based on reviewers’ self-assessed expertise. Operating on a Bag-of-Words (BoW) representation, the Toronto Paper Matching System is able to do unsupervised classification of documents <span class="citation" data-cites="charlin2013toronto">(Charlin and Zemel <a href="#ref-charlin2013toronto" role="doc-biblioref">2013</a>)</span>. However, if each document is considered a collection of words, the goal is to identify discriminative words for the document. The structure of the document itself, i.e. the grammatical role and the order of words, is not relevant to this model. Because the goal is to identify words distinctive to the document, certain words that do not carry any meaning for that purpose are removed as “stop words” before running the model. Both of these functionalities constitute the main limitation of LDA: it is unable to comprehend the semantics and context of words.</p>
 <p>The word2vec approach attempts to overcome that particular deficiency by the use of word embeddings. Word embeddings generally constitute learned representation for text with real-number vectors where words try to capture as much of the semantic, lexical and context information as possible. word2vec combines two different learning models, Continuous Bag of Words (CBoW), predicting a word given its context, and Skip-Gram, predicting the context given a word. Thus, using neural networks, the vectors are created by predicting for each word potential neighboring words. Words that have the similar meanings end up with similar representations.Though word2vec attempts to integrate the context, it only provides one vector numeric representation for each word. For example, the word “bank” would erroneously have the same numeric representation in the sentences <em>“We went to the river <strong>bank</strong>.”</em>and <em>“I need to go to the <strong>bank</strong> to make a deposit.”</em>. In combining different meanings and usages of the same word into a single vector, word2vec inadvertently ends up generating context-independent word embeddings.</p>
 <p>In contrast to word2vec, the Pre-trained language model (PLM) Bidirectional Encoder Representations from Transformers (BERT) generates word embeddings that facilitate multiple vector numeric representations for the same word, depending on the context of the word in any given sentence. Thus, BERT word embeddings are context-dependent. Moreover, the PLM BERT exceeds the performance of uni- or single-direction language models by applying bidirectional training of the attention model Transformer to language modeling.</p>
+<<<<<<< Updated upstream
 <p>Lastly, in previous stages of our work, we have also contemplated the employment of BERTopic , which leverages BERT embeddings and c-TF-IDF to create easily interpretable topics <span class="citation" data-cites="grootendorst2020bertopic">(<a href="#ref-grootendorst2020bertopic" role="doc-biblioref">Grootendorst 2020</a>)</span>. TF-IDF combines two methods to generate features from textual documents: Term Frequency (FT) to get the raw count of words within a document and Inverse Document Frequency (IDF) to indicate the informative value of words by their frequency in a document compared to their frequency across all other documents. Thus, common words such as “and” would be punished by IDF for being of no value to the distinction of documents and the identification of topics. The transformation of TF-IDF to c-TF-IDF then involves the merging of all documents in one long document to concentrate on classes, i.e. topics. While promising at first, the performance of BERTopic was soon outrun by the other models, <em>ceteris paribus</em>.</p>
 <h2 id="proposed-method">Proposed Method</h2>
 <p>CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span> integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.</p>
+=======
+<<<<<<< HEAD
+<p>Lastly, in previous stages of our work, we have also contemplated the employment of BERTopic , which leverages BERT embeddings and c-TF-IDF to create easily interpretable topics <span class="citation" data-cites="grootendorst2020bertopic">(Grootendorst <a href="#ref-grootendorst2020bertopic" role="doc-biblioref">2020</a>)</span>. TF-IDF combines two methods to generate features from textual documents: Term Frequency (FT) to get the raw count of words within a document and Inverse Document Frequency (IDF) to indicate the informative value of words by their frequency in a document compared to their frequency across all other documents. Thus, common words such as “and” would be punished by IDF for being of no value to the distinction of documents and the identification of topics. The transformation of TF-IDF to c-TF-IDF then involves the merging of all documents in one long document to concentrate on classes, i.e. topics. While promising at first, the performance of BERTopic was soon outrun by the other models, <em>ceteris paribus</em>.</p>
+<p><strong>Footnotes and Sidenotes</strong></p>
+<p>You can use footnotes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> or sidenotes to elaborate on a concept throughout the paper.</p>
+<aside>
+This is a side note.
+</aside>
+<h2 id="proposed-method">Proposed Method</h2>
+<p>CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span> integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.</p>
+=======
+<p>Lastly, in previous stages of our work, we have also contemplated the employment of BERTopic , which leverages BERT embeddings and c-TF-IDF to create easily interpretable topics <span class="citation" data-cites="grootendorst2020bertopic">(<a href="#ref-grootendorst2020bertopic" role="doc-biblioref">Grootendorst 2020</a>)</span>. TF-IDF combines two methods to generate features from textual documents: Term Frequency (FT) to get the raw count of words within a document and Inverse Document Frequency (IDF) to indicate the informative value of words by their frequency in a document compared to their frequency across all other documents. Thus, common words such as “and” would be punished by IDF for being of no value to the distinction of documents and the identification of topics. The transformation of TF-IDF to c-TF-IDF then involves the merging of all documents in one long document to concentrate on classes, i.e. topics. While promising at first, the performance of BERTopic was soon outrun by the other models, <em>ceteris paribus</em>.</p>
+<h2 id="proposed-method">Proposed Method</h2>
+<p>CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span> integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.</p>
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
+>>>>>>> Stashed changes
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure">
-<img src="figures/CTM.png" alt="High-level architectural schema of a CTM" width="100%" />
+<div class="figure"><span id="fig:fig1"></span>
+<img src="figures/CTM.png" alt="High-level architectural schema of a CTM, from Bianchi et al. 2020" width="70%" />
 <p class="caption">
-(#fig:fig1)High-level architectural schema of a CTM
+Figure 4: High-level architectural schema of a CTM, from Bianchi et al. 2020
 </p>
 </div>
 </div>
 <h2 id="experiments">Experiments</h2>
+<<<<<<< Updated upstream
 <p><strong>Data</strong>: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students’ individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year’s student cohort. Supervision plans are currently used in the CTM as validation data. The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files, which we found useful to specify directly within our convertion function. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> txt_to_csv(input_dir, output_dir, new_filename): </span>
@@ -1529,6 +1583,68 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ctm.fit(training_dataset)</span></code></pre></div>
 </div>
+=======
+<<<<<<< HEAD
+<p><strong>Data</strong>: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students’ individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year’s student cohort. Supervision plans are currently used in the CTM as validation data. The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>def <span class="kw">txt_to_csv</span>(input_dir, output_dir, new_filename)<span class="op">:</span><span class="st"> </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="st">  </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="st">  </span>files =<span class="st"> </span><span class="kw">glob</span>(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span><span class="st"> </span>input_dir <span class="op">+</span><span class="st"> &#39;/*.txt&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  data =<span class="st"> </span>[[i, <span class="kw">open</span>(i, <span class="st">&#39;rb&#39;</span>)<span class="kw">.read</span>()] <span class="cf">for</span> i <span class="cf">in</span> files]</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  df =<span class="st"> </span><span class="kw">pd.DataFrame</span>(data, <span class="dt">columns =</span> [<span class="st">&#39;FileName&#39;</span>, <span class="st">&#39;Content&#39;</span>])</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  df[<span class="st">&#39;FileName&#39;</span>] =<span class="st"> </span>df[<span class="st">&#39;FileName&#39;</span>]<span class="kw">.str.replace</span>(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span><span class="st"> </span>input_dir <span class="op">+</span><span class="st"> &#39;/&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  df[<span class="st">&#39;Content&#39;</span>] =<span class="st"> </span>df[<span class="st">&#39;Content&#39;</span>]<span class="kw">.str.slice</span>(<span class="dt">start =</span> <span class="dv">0</span>, <span class="dt">stop =</span> <span class="dv">32767</span>) <span class="co"># Upper limit of strings per cell in csv</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="kw">df.to_csv</span>(output_dir <span class="op">+</span><span class="st"> &#39;/&#39;</span> <span class="op">+</span><span class="st"> </span>new_filename <span class="op">+</span><span class="st"> &#39;.csv&#39;</span>, <span class="dt">index =</span> False)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="cf">if</span> not df.empty<span class="op">:</span><span class="st"> </span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="st">    </span><span class="kw">print</span>(<span class="st">&#39;Succesfully converted txt files in directory &#39;</span> <span class="op">+</span><span class="st"> </span><span class="kw">os.path.basename</span>(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span><span class="st"> </span>input_dir <span class="op">+</span><span class="st"> &#39; to single csv file.&#39;</span>))</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="cf">else</span><span class="op">:</span><span class="st"> </span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">    </span><span class="kw">print</span>(<span class="st">&#39;File empty.&#39;</span>) </span>
+<span id="cb1-13"><a href="#cb1-13"></a>  return None</span></code></pre></div>
+</div>
+<p><strong>Software</strong>: We used Google Colab notebooks for tasks that required high computational performance, i.e. GPU usage. The application prototype was developed on the Streamlit framework, using Visual Studio Code on a Windows local machine and PyCharm on a Linux Ubuntu local machine. For Windows, a virtual environment for python using conda from Anaconda was set up to facilitate running the Streamlit app on a local host. For version control, we relied on a shared GitHub repository.</p>
+<p><strong>Evaluation method</strong>: To evaluate model performance, two metrics for topic coherence and one for topic diversity were selected.</p>
+<p><strong>Experimental details</strong>: How you ran your experiments (e.g. model configurations, learning rate, training time, etc.)</p>
+<p><strong>Results</strong>: Report the quantitative results that you have found so far. Use a table or plot to compare multiple results and compare against baselines.</p>
+<p><strong>Comment on quantitative results</strong>: Are they what you expected? Better than you expected? Worse than you expected? Why do you think that is? What does this tell you about what you should do next? Including training curves might be useful to discuss whether things are training effectively.</p>
+<p><strong><em>Note</em></strong>: <strong>Feel free to use some of the code from your project to explain your experiments. See example code block below.</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>OUTPUT_DIM =<span class="st"> </span><span class="kw">len</span>(LABEL.vocab)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>DROPOUT =<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>N_FILTERS =<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>FILTER_SIZES =<span class="st"> </span>[<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>model =<span class="st"> </span><span class="kw">BERTCNN</span>(bert,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>                OUTPUT_DIM,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>                DROPOUT,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>                N_FILTERS,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>                FILTER_SIZES)</span></code></pre></div>
+=======
+<p><strong>Data</strong>: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students’ individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year’s student cohort. Supervision plans are currently used in the CTM as validation data. The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files, which we found useful to specify directly within our convertion function. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> txt_to_csv(input_dir, output_dir, new_filename): </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  files <span class="op">=</span> glob(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span> input_dir <span class="op">+</span> <span class="st">&#39;/*.txt&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> [[i, <span class="bu">open</span>(i, <span class="st">&#39;rb&#39;</span>).read()] <span class="cf">for</span> i <span class="kw">in</span> files]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;FileName&#39;</span>, <span class="st">&#39;Content&#39;</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  df[<span class="st">&#39;FileName&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;FileName&#39;</span>].<span class="bu">str</span>.replace(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span> input_dir <span class="op">+</span> <span class="st">&#39;/&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  df[<span class="st">&#39;Content&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Content&#39;</span>].<span class="bu">str</span>.<span class="bu">slice</span>(start <span class="op">=</span> <span class="dv">0</span>, stop <span class="op">=</span> <span class="dv">32767</span>) <span class="co"># Upper limit of strings per cell in csv</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  df.to_csv(output_dir <span class="op">+</span> <span class="st">&#39;/&#39;</span> <span class="op">+</span> new_filename <span class="op">+</span> <span class="st">&#39;.csv&#39;</span>, index <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">not</span> df.empty: </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Succesfully converted txt files in directory &#39;</span> <span class="op">+</span> os.path.basename(<span class="st">&#39;/content/drive/MyDrive/ThesisAllocationSystem/&#39;</span> <span class="op">+</span> input_dir <span class="op">+</span> <span class="st">&#39; to single csv file.&#39;</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;File empty.&#39;</span>) </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+</div>
+<p><strong>Software</strong>: We used Google Colab notebooks for tasks that required high computational performance, i.e. GPU usage. The application prototype was developed on the Streamlit framework, using Visual Studio Code on a Windows local machine and PyCharm on a Linux Ubuntu local machine. For Windows, a virtual environment for python using conda from Anaconda was set up to facilitate running the Streamlit app on a local host. For version control, we relied on a shared GitHub repository.</p>
+<p><strong>Evaluation method</strong>: To evaluate model performance of our topic model, we looked at coherence and diversity of topics created. <strong>Normalized Pointwise Mutual Information (NPMI)</strong> is a suitable coherence metric. It uses empirical frequency of words in the original text corpus and measures degree of relatedness of top-10 words to the topic. However, NPMI is computed on the same data the model is trained on and is hence an inherently limited measure of coherence. Therefore, a second coherence measure was employed: external <strong>word embeddings based topic coherence (WETC)</strong>. It calculates average pairwise cosine similarity of the word embeddings of the top-10 words in a topic and computes an average across all topic. It relies on an external vocabulary for comparison, which allows for a more unbiased evaluation. Additionally, the model’s topic diversity was evaluated with the <strong>Inverted Rank-Biased Overlap (IRBO)</strong> metric. The method compares two ranked list of topics from the model, i.e. weights the list rank position of same words in a topic, penalizing same words that are higher in a topic list rank. It can take values between 0 and 1, where 0 indicates that all created topics are equal and 1 that they are completely different from one another.</p>
+<p><strong>Experimental details</strong>: We experimented with setting different numbers of epochs in the hyper-parameter configurations of the CTM (num_epochs parameter to 5, 15, 25, 30, 45). As we train on a very small sample, training time was always just a few seconds. We experimented with number of topics to be created as well (n_components parameter to 28, 20 and 14 topics) It should be noted that there are currently little options available to further fine-tune and customize the model, as it has been published fairly recently and for research purposes only.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ctm <span class="op">=</span> CombinedTM(input_size<span class="op">=</span><span class="bu">len</span>(qt.vocab), bert_input_size<span class="op">=</span><span class="dv">768</span>, num_epochs<span class="op">=</span><span class="dv">25</span>, n_components<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ctm.fit(training_dataset)</span></code></pre></div>
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
+</div>
+>>>>>>> Stashed changes
 <p><strong>Results</strong>: We found that the model produces the best outputs when</p>
 <p><strong>Comment on quantitative results</strong>: Are they what you expected? Better than you expected? Worse than you expected? Why do you think that is? What does this tell you about what you should do next? Including training curves might be useful to discuss whether things are training effectively.</p>
 <p><strong><em>Note</em></strong>: <strong>Feel free to use some of the code from your project to explain your experiments. See example code block below.</strong></p>
@@ -1543,15 +1659,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="acknowledgments">Acknowledgments</h2>
 <p>List acknowledgments, if any. For example, if someone provided you a dataset, or you used someone else’s resources, this is a good place to acknowledge the help or support you received.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-bianchi2020pre">
+<p>Bianchi, Federico, Silvia Terragni, and Dirk Hovy. 2020. “Pre-Training Is a Hot Topic: Contextualized Document Embeddings Improve Topic Coherence.” <em>arXiv Preprint arXiv:2004.03974</em>.</p>
+=======
+>>>>>>> Stashed changes
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-bianchi2020pre" class="csl-entry" role="doc-biblioentry">
 Bianchi, Federico, Silvia Terragni, and Dirk Hovy. 2020. <span>“Pre-Training Is a Hot Topic: Contextualized Document Embeddings Improve Topic Coherence.”</span> <em>arXiv Preprint arXiv:2004.03974</em>.
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
 </div>
-<div id="ref-charlin2013toronto" class="csl-entry" role="doc-biblioentry">
-Charlin, Laurent, and Richard Zemel. 2013. <span>“The Toronto Paper Matching System: An Automated Paper-Reviewer Assignment System.”</span>
+<div id="ref-charlin2013toronto">
+<p>Charlin, Laurent, and Richard Zemel. 2013. “The Toronto Paper Matching System: An Automated Paper-Reviewer Assignment System.”</p>
 </div>
-<div id="ref-grootendorst2020bertopic" class="csl-entry" role="doc-biblioentry">
-Grootendorst, Maarten. 2020. <span>“BERTopic: Leveraging BERT and c-TF-IDF to Create Easily Interpretable Topics.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.4381785">https://doi.org/10.5281/zenodo.4381785</a>.
+<div id="ref-grootendorst2020bertopic">
+<p>Grootendorst, Maarten. 2020. “BERTopic: Leveraging Bert and c-Tf-Idf to Create Easily Interpretable Topics.” Zenodo. <a href="https://doi.org/10.5281/zenodo.4381785">https://doi.org/10.5281/zenodo.4381785</a>.</p>
 </div>
 </div>
 <section class="footnotes" role="doc-endnotes">
