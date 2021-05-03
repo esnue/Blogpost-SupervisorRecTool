@@ -1,6 +1,6 @@
 ---
 title: "Thesis Supervisor Recommendation Tool"
-description: "We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors' research fields to find the one that can best guide them substantively instead of choosing based on familiarity or popularity."
+description: "Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers."
 author: 
   - name: Lena Wagner 
     url: 
@@ -26,20 +26,49 @@ library(reticulate) # For rendering Python code
 
 ## Abstract 
 
-To tackle the challenge of finding a suitable supervisor for second-year graduate students' master thesis research proposals at the Hertie School, we have built a tool that allows for a comprehensive, yet concise overview of the different areas of academic expertise covered by the school's faculty members. Currently, students preferences for thesis supervisors can be assumed to be mostly based on very limited and selective information about research areas and methodologies available at the school, such as through personal experience with some of the professors or fellow students' reports. However, the choice of the supervisor can impact both the progress and quality of a thesis as well as student’s work opportunities after graduation.
-We determine areas of academic expertise by identifying underlying topics in each supervisor's body of academic publications, i.e. publicly available papers. Standard Latent Dirichlet Allocation (LDA) topic modelling often results in topics that do not achieve a high degree of coherence, especially when it comes to domain-specific vocabulary. Hence, we are proposing to leverage the power of Pre-trained Language Models (PLM) and neural topic models. Among the most promising state-of-the-art technologies do so is Contextual Topic Modeling (CTM) with pre-trained BERT sentence embedding (SBERT) to improve topic coherence and meaning across documents. While we find that embedded CTM is able to extract coherent topics from small data sets ($n < 900$) with longer text per document, it  achieves limited results for shorter texts per document. Therefore, we concluded that our original plan to match two sets of documents based on topic similarity is not feasible within our project, but still presents an interesting avenue for further research.
+Using the Contextualized Topic Model (CTM), we identify academic topics covered by the faculty of the Hertie School in their published papers. The outputs of the model will be available on a web application that aims to support students in their thesis supervisor selection. On the web application, students can get an accessible overview of all potential supervisors' research fields to find the one that can best guide them substantively. The tool is especially recommended for students that have not been able to get familiar with the whole body of the faculty and would like to make sure their supervisor is the best fit for them. The CTM is most successful in identifying coherent topics on texts that entails proper sentences as opposed to bullet points and a higher word count than 200.
  
 
 ## Introduction / Background
 
-Each fall semester, Hertie students and administrative staff alike are faced with the challenging task of finding a suitable and available supervisor for the students’ master theses. The process starts with students handing in research proposals, in which they have to indicate three ranked preferences for potential supervisors. It can be assumed that these preferences are mostly based on very limited information on and/or semi-random clues about professors’ research areas, methodologies and thematic focus.\n
-While supervision plans issued by each of the 28 supervisors are available on Moodle, the process of manually downloading and exhaustively going through each of the document is likely to be both inefficient and tedious. It is therefore certainly a possibility that some students might not select a supervisor best-fitting to the topic, focus and research methodology of the their envisioned thesis. This is worrying because the choice of the supervisor is relevant to the progress and quality of a thesis, which in turn can determine a student’s work opportunities after graduation.\n
-Against this background, our project's main goal is to increase the quality and efficiency of supervisor matching by developing a tool that provides a lucid and accessible overview over the wide range of fields of academic expertise in the school's faculty body. Thereby, we hope to alleviate frictions in the choice process due to asymmetric information and imbalanced demand for more popular and well-known professors, coincidentally also delivering a valuable contribution to our school community. Initially, a text matching system based on document-level topic similarity was envisioned. As a text classification task, the Toronto Paper Matching System constitutes a similar application case [@charlin2013toronto]. This approach has been proven to be unfeasible due to data quality constraints for our particular project setting. As a consequence, the project's focus remains on topic modeling.\n
-To depict the areas of academic expertise that are covered by Hertie School's faculty members, we decided to employ topic modeling on their respective body of published academic work. However, such a retrospective approach has an important inherent limitation: it cannot show most recent advancements that deviate from a professor's past research. However, given that academic careers are usually constructed to deepen expertise in and expand knowledge about subject-specific areas that remain fairly stable across the years, this limitation can be neglected.\n
-Topic modeling in general is a widely used tool and among the most useful ways to understand text on the document level. However, it has so far been missing out of the powerful benefits that pre-trained language models have to offer, even though using external knowledge on semantic relationships in text have been proven to increase topic coherence. Higher coherence is easier to interpret by humans and is considered more meaningful, hence more desirable in a setting where model outputs are meant to inform human users in their decision-making.\n
-Contextualized Topic Models (CTM) addresses this gap by adding contextual information to neural topic models, thereby significantly improving coherence with competitive results in topic diversity [@bianchi2020pre]. We apply this innovative approach and achieve excellent results even with a very small sample ($n<900$), but unsatisfactory results for very short texts characterized by varying writing styles, quality and incomplete sentences, e.g. bullet points. Lastly, it should be noted that our projects expands the work done by last semester's students from the class "Python for Data Scientists", who built a simple LDA model and similarity index based on user input.^[Available under (https://github.com/cbsobral/python)]
+If you've happened to come across this website, you're either a student that is taking the NLP class at Hertie and would like to get a great example of a project or you're a 2nd year student anxious to get started on the MA thesis road. In any case, you've come to the right place.\n
+
+This project was inspired by the recurring challenge in the fall semester, when Hertie students and administrative staff alike have to match suitable and available supervisors to students' master theses. The task is - as you can probably imagine - very laborious. As a Hertie student, you are required to indicate three preferences of supervising professors in decreasing order of rank. But what if you have no idea? You've probably only met 5 professors, but there are 28 options out there! The agony. Worst of all? There is no good overview on the Moodle platform: you're forced to manually and individually download the supervision plan. 
+
+```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: Own work."}
+knitr::include_graphics("figures/meme1.jpg")
+```
+
+But don't lose hope yet because your seniors are here to come to your aid! We know that the choice of the supervisor matters. It certainly is relevant to the progress and quality of your thesis, potentially even to your work opportunities after graduation! That is why we have developed this tool. \n
+
+The tool provides a lucid and accessible overview over the wide range of fields of academic expertise in the school's faculty body. It expands the work of last semester's student from the class "Python for Data Scientists", who built a simple LDA model and similarity index based on user input.^[Available under (https://github.com/cbsobral/python)] Sounds like a mouthful? Is a mouthful. No worries, everything is going to be explained below. Just stay with us!\n 
+
+However, in case you are familar with these terms and totally know what's going on, here is the **TDLR**: LDA's biggest advantage, Bag-of-Words, turns out to be its deficiency. CTM addresses the lack of contextual information capture by integrating word embedding. [@bianchi2020pre] CTM is a fairly new model, but it's proven to be super successful in our case!
+
 
 ## Related Work 
+
+We've been throwing around some fancy terms making us appear real clever, but that is not the goal of this blog post. We want you to understand what's going on! After all, what is a teacher's worth if the students don't get it?\n
+
+The general challenge of topic modeling is the detection of underlying topics in documents and the correct identification of patterns to match documents to topics. Documents describes the text unit of interest such as individual Twitter tweets, mails, papers, reports, etc. So the goal is to be able to identify topics and to create a pattern that is able to match unseen documents to established topics.\n
+
+Let's say you've been tasked with sorting post. Super tedious work. As you begin to go through each of the letters, you identify categories of letters: bills, advertisement, reminders and notifications of changes. The first pile is done, now on to the next pile we go. However, this pile is somewhat different from the first pile. However, you're clever and confident that you can clearly match the unseen letters to the categories (topics) you've established in the first pile. Get it?\n 
+
+But how does a machine even comprehend text? Easy: by numbers! Everything is turned into numbers. We call that step "encoding". Fancy term there! Now that we've established the foundations, let's get into the nitty-gritty details!\n
+
+```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971"}
+knitr::include_graphics("figures/bow.png")
+```
+
+Latent Dirichlet Allocation (LDA) is a popular machine learning probabilistic algorithm used for topic modeling. The figure below illustrates how it basically works. It discovers topics and then matches these topics to documents. In the end, you get a table of documents with their proportional share to each topics. Going back to our mailbox example: let's say the first letter (document) is advertisement but there is also a bit of a reminder. Ideally, LDA would return that the document of interest is 60% advertisement and 39% reminder, 0.5% bill and 0.5% notification of changes. Why 0.5%? That is how probability works! You can never fully rule out that something happens, you just know that it is veeeeery unlikely to happen.\n
+
+```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html"}
+knitr::include_graphics("figures/lda.png")
+```
+
+What do we mean by machine learning? Standard LDA models are trained once on a training set, i.e. there is one process of identifying and establishing topics. It might be a long process but after the process is done, there is no more training. The model is left untouched, its sole purpose then is to be employed. That is different for deep learning models! They're configured to continuously learn. Every time they get new input, parameters inside the models are tweaked to achieve optimal performance.\n 
+
+But how exactly does LDA find topics? The answer to that very good question is Bag-of-Words (BoW - not to be mistaken with the immensely popular Nintendo Switch game Breath of the Wild (BOTW)). Each document is considered a collection of words, the goal is to identify words distinctive to the document. What then? We get the Term Frequency to get the raw count of words within a document and Inverse Document Frequency to indicate the informative value of words by their frequency in a document compared to their frequency across all other documents. So Term Frequency is interested in what words are used very often and Inverse Document Frequency acts a checks and balance! Words such as "and", "or", "but", etc. appear very often but they do not carry any informative value.
 
 The challenge of topic modeling usually lies in the unsupervised detection of underlying topics in documents and the correct identification of patterns to match documents to topics. As a machine learning technique, Latent Dirichlet Allocation (LDA) is a popular probabilistic algorithm used for topic modeling. The Toronto Paper Matching System is also based on the LDA machine learning model. The Toronto Paper Matching System matches papers to initial expertise scores based on reviewers’ publications and cross-checks these matched with elicited scores based on reviewers’ self-assessed expertise.  Operating on a Bag-of-Words (BoW) representation, the Toronto Paper Matching System is able to do unsupervised classification of documents [@charlin2013toronto]. However, if each document is considered a collection of words, the goal is to identify discriminative words for the document. The structure of the document itself, i.e. the grammatical role and the order of words, is not relevant to this model. Because the goal is to identify words distinctive to the document, certain words that do not carry any meaning for that purpose are removed as "stop words" before running the model. Both of these functionalities constitute the main limitation of LDA: it is unable to comprehend the semantics and context of words.\n
 
@@ -54,7 +83,16 @@ Lastly, in previous stages of our work, we have also contemplated the employment
 
 CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters $\mu$ and $\sigma^2$ of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. [-@bianchi2020pre] integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and  Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.
 
+<<<<<<< Updated upstream
 ```{r fig1, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "High-level architectural schema of a CTM"}
+=======
+<<<<<<< HEAD
+
+```{r fig1, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "High-level architectural schema of a CTM, from Bianchi et al. 2020"}
+=======
+```{r fig1, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "High-level architectural schema of a CTM"}
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
+>>>>>>> Stashed changes
 knitr::include_graphics("figures/CTM.png")
 ```
 ## Experiments 
@@ -62,7 +100,15 @@ knitr::include_graphics("figures/CTM.png")
 **Data**: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students' individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year's student cohort. Supervision plans are currently used in the CTM as validation data.\n
 The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files, which we found useful to specify directly within our convertion function. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words. 
 
+<<<<<<< Updated upstream
 ```{python txt-csv, echo = TRUE, eval = FALSE}
+=======
+<<<<<<< HEAD
+```{r python_ctm, echo = TRUE, eval = FALSE}
+=======
+```{python txt-csv, echo = TRUE, eval = FALSE}
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
+>>>>>>> Stashed changes
 def txt_to_csv(input_dir, output_dir, new_filename): 
   
   files = glob('/content/drive/MyDrive/ThesisAllocationSystem/' + input_dir + '/*.txt')
@@ -95,11 +141,25 @@ ctm.fit(training_dataset)
 
 
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+```{r python_ctm2, echo = TRUE, eval = FALSE}
+OUTPUT_DIM = len(LABEL.vocab)
+DROPOUT = 0.5
+N_FILTERS = 100
+FILTER_SIZES = [2,3]
+=======
+>>>>>>> Stashed changes
 **Comment on quantitative results**: Are they what you expected? Better than you expected? Worse than you expected? Why do you think that is? What does this tell you about what you should do next? Including training curves might be useful to discuss whether things are training effectively.
 
 ```{r fig1, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Train Loss"}
 knitr::include_graphics("figures/trainloss.png")
 ```
+<<<<<<< Updated upstream
+=======
+>>>>>>> fec2ca52f462ca3c522a29324850acf347147011
+>>>>>>> Stashed changes
 
 ```{r fig1, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = Topic Distribution across Professors}
 knitr::include_graphics("figures/topic-prof.png")
