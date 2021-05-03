@@ -150,4 +150,8 @@ Summarize the main findings of your project, and what you learned. Highlight you
 
 ## Acknowledgments 
 
-List acknowledgments, if any. For example, if someone provided you a dataset, or you used someone else's resources, this is a good place to acknowledge the help or support you received.
+As noted repeatedly in the paper, our project is inspired by last semester's students from the class "Python for Data Scientists". We are grateful to their groundwork and the inspiration they provided us.\n 
+Throughout the project, we had several guiding meetings with Slava Jankin who, though being a demanding teacher, never ceased to encourage us to dive deeper, experiment more, and give our best. We are also very grateful to Huy Ngoc Dang who amazed us by his willingness to instruct us about different coding challenges, such as visualization or Streamlit implementation, as well as his devotion to the success of our project.\n
+We also want to thank Curricular Affairs and all involved members of the school administration who facilitated access to this year's cohorts research proposals (anonymized and voluntary, of course!) for testing purposes.\n
+Lastly, our research project would not have been possible without the remarkable work of Bianchi et al. [-@bianchi2020pre]. Their documentation and instructions were of paramount importance to this project and present a top-notch case of collaborative open-source academic work.
+
