@@ -1,16 +1,15 @@
 ---
 title: "Distill Article Template for NLP Final Report"
-description: |
-  Add a short description of your article here (i.e. "We present a deep learning approach to classifying labeled texts and phrases in party manifestos, using the coding scheme and documents from the Manifesto Project Corpus.")
+description: "We identify areas of academice expertise that are covered by the faculty of the Hertie School by employing a Contextualized Topic Model (CTM) on the body of academic publications for each faculty member. Model outputs are visualized in a Streamlit web application that aims to support students in their thesis supervisor selection by providing them with an easily accessible overview of all potential supervisors' research fields."
 author: 
-  - name: Allison Koh 
-    url: https://allisonkoh.github.io
-  - name: Second Author 
+  - name: Lena Wagner 
+    url: 
+  - name: Ba Linh Le 
 date: "`r Sys.Date()`" 
 categories: 
   - Natural Language Processing 
 creative_commons: CC BY
-repository_url: https://github.com/allisonkoh/distill-template/
+repository_url: https://github.com/esnue/ThesisAllocationSystem
 output: 
   distill::distill_article: 
     self_contained: false
@@ -27,7 +26,9 @@ library(reticulate) # For rendering Python code
 
 ## Abstract 
 
-An abstract should concisely (less than 300 words) motivate the problem, describe your aims, describe your contribution, and highlight your main finding(s). 
+To tackle the challenge of finding a suitable supervisor for second-year graduate students' master thesis research proposals at the Hertie School, we have built a tool that allows for a comprehensive, yet concise overview of the different areas of academic expertise covered by the school's faculty members. Currently, students preferences for thesis supervisors can be assumed to be mostly based on very limited and selective information about research areas and methodologies available at the school, such as through personal experience with some of the professors or fellow students' reports. However, the choice of the supervisor can impact both the progress and quality of a thesis as well as student’s work opportunities after graduation.
+We determine areas of academic expertise by identifying underlying topics in each supervisor's body of academic publications, i.e. publicly available papers. Standard Latent Dirichlet Allocation (LDA) topic modelling often results in topics that do not achieve a high degree of coherence, especially when it comes to domain-specific vocabulary. Hence, we are proposing to leverage the power of Pre-trained Language Models (PLM) and neural topic models. Among the most promising state-of-the-art technologies do so is Contextual Topic Modeling (CTM) with pre-trained BERT sentence embedding (SBERT) to improve topic coherence and meaning across documents. While we find that embedded CTM is able to extract coherent topics from small data sets (n < 900) with longer text per document, it  achieves limited results for shorter texts per document. Therefore, we concluded that our original plan to match two sets of documents based on topic similarity is not feasible within our project, but still presents an interesting avenue for further research.
+ 
 
 ## Introduction / Background
 
