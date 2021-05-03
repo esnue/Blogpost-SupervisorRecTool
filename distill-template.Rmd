@@ -22,6 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Load dependencies 
 library(reticulate) # For rendering Python code 
+library(kableExtra)
 ```
 
 ## Abstract 
@@ -124,7 +125,25 @@ ctm = CombinedTM(input_size=len(qt.vocab), bert_input_size=768, num_epochs=25, n
 ctm.fit(training_dataset)
 ```
 
-**Results**: We found that the model produces the best outputs with `num_epochs` set to 25 and `n_components` to 14.
+**Results**: We found that the model produces the best outputs with `num_epochs` set to 25 and `n_components` to 14. Looking at our model only, performance as expected increases as the number of training epochs increase, until it reaches the threshold of 25 epochs, after which a downwards trend can be observed. This trend is visible already for the model performance with 30 training epochs: both the average NPMI and WETC decrease, IRBO remains relatively stable.
+
+```{r}
+epochs <- list(5, 15, 25, 30, 45)
+npmi <- list(-0.017, 0.030, 0.085, 0.050, 0.055)
+wetc <- list(0.120, 0.153, 0.168, 0.162, 0.167)
+irbo <- list(0.983, 0.984, 0.983, 0.971, 0.982)
+
+
+data <- cbind(epochs, npmi, wetc, irbo)
+
+kbl(
+  data,
+  col.names = c('Epochs', 'NPMI', 'WETC', 'IRBO'),
+  caption = "Performance Metrics"
+) %>%
+  kable_styling()
+
+```
 
 
 **Comment on quantitative results**: Are they what you expected? Better than you expected? Worse than you expected? Why do you think that is? What does this tell you about what you should do next? Including training curves might be useful to discuss whether things are training effectively.
@@ -136,11 +155,37 @@ knitr::include_graphics("figures/trainloss.png")
 
 ## Analysis 
 
-Your report should include some qualitative evaluation. That is, try to understand your system (how it works, when it succeeds and when it fails) by measuring or inspecting key characteristics or outputs of your model.
+Here you can see the 14 topics that were created from the training data, with their first five words respectively. e can see that almost all topics show great coherence and diversity, even when there is substantial overlap (e.g. in topic 3 and topic 13).
 
-- Types of qualitative evaluation include: commenting on selected examples, error analysis, measuring the performance metric for certain subsets of the data, ablation studies, comparing the behaviors of two systems beyond just the performance metric, and visualizing attention distributions or other activation heatmaps.
+```{r}
+top <- data.frame("Topic ID"=c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
+                  "Words"=c('nsocial, social, society, entrepreneurship, needs,', 
+                            'election , party, elections, voters, vote',
+                            'germany, employment, german, children, age',
+                            'rights, human, law, states, asylum',
+                            'information, conflict, nto, group, behaviour',
+                            'firms, firm, tax, average, bank',
+                            'price, countries, climate, energy, policy',
+                            'organizations, business, social, entrepreneurship, nsocial',
+                            'states, state, european, political, eu',
+                            'robot, robots, behaviour, group, intelligence',
+                            'energy, cost, markets, high, costs',
+                            'political, public, government, parties, policy',
+                            'ngiven, always, extend, codes, constant',
+                            'eds, refugees, neuropean, law, ninternational'))
 
-- The Practical Tips lecture notes has a detailed section on qualitative evaluation -- you may find it useful to reread it.
+
+
+kbl(
+  top,
+  col.names = c('Topic ID', 'Topic Words'),
+  caption = "First Five Words per Topic"
+) %>%
+  kable_styling()
+
+```
+
+We can see that almost all topics show great coherence and diversity, even when there is substantial overlap (e.g. in topic 3 and topic 13).
 
 ```{r fig6, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Topic Distribution across Professors"}
 knitr::include_graphics("figures/topic-prof.png")
@@ -155,7 +200,7 @@ Moreover, due to time constraints, we were unable to test different vocabulary l
 
 ## Acknowledgments 
 
-As noted repeatedly in the paper, our project is inspired by last semester's students from the class "Python for Data Scientists". We are grateful to their groundwork and the inspiration they provided us.\n 
+As previously mentioned, our project is inspired by last semester's students from the class "Python for Data Scientists". We are grateful to their groundwork and the inspiration they provided us.\n 
 Throughout the project, we had several guiding meetings with Slava Jankin who, though being a demanding teacher, never ceased to encourage us to dive deeper, experiment more, and give our best. We are also very grateful to Huy Ngoc Dang who amazed us by his willingness to instruct us about different coding challenges, such as visualization or Streamlit implementation, as well as his devotion to the success of our project.\n
 We also want to thank Curricular Affairs and all involved members of the school administration who facilitated access to this year's cohorts research proposals (anonymized and voluntary, of course!) for testing purposes.\n
 Lastly, our research project would not have been possible without the remarkable work of Bianchi et al. [-@bianchi2020pre]. Their documentation and instructions were of paramount importance to this project and present a top-notch case of collaborative open-source academic work.
