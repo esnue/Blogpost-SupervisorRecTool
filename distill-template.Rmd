@@ -63,19 +63,34 @@ This is a side note.
 CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters $\mu$ and $\sigma^2$ of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. [-@bianchi2020pre] integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and  Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.
 
 
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "High-level architectural schema of a CTM", source: Bianchi et al. 2020}
+```{r fig1, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "High-level architectural schema of a CTM", from Bianchi et al. 2020}
 knitr::include_graphics("figures/CTM.png")
 ```
 
 ## Experiments 
 
-**Data**: Describe the dataset(s) you are using (provide references). If it's not already clear, make sure the associated task is clearly described.
+**Data**: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students' individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year's student cohort. Supervision plans are currently used in the CTM as validation data.\n
+The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words. 
+
+```{python ctm parameters echo = TRUE, eval = FALSE}
+def txt_to_csv(input_dir, output_dir, new_filename): 
+  
+  files = glob('/content/drive/MyDrive/ThesisAllocationSystem/' + input_dir + '/*.txt')
+  data = [[i, open(i, 'rb').read()] for i in files]
+  df = pd.DataFrame(data, columns = ['FileName', 'Content'])
+  df['FileName'] = df['FileName'].str.replace('/content/drive/MyDrive/ThesisAllocationSystem/' + input_dir + '/', '')
+  df['Content'] = df['Content'].str.slice(start = 0, stop = 32767) # Upper limit of strings per cell in csv
+  df.to_csv(output_dir + '/' + new_filename + '.csv', index = False)
+  if not df.empty: 
+    print('Succesfully converted txt files in directory ' + os.path.basename('/content/drive/MyDrive/ThesisAllocationSystem/' + input_dir + ' to single csv file.'))
+  else: 
+    print('File empty.') 
+  return None
+```
  
-**Software**: Briefly list (and cite) software you used.
+**Software**: We used Google Colab notebooks for tasks that required high computational performance, i.e. GPU usage. The application prototype was developed on the Streamlit framework, using Visual Studio Code on a Windows local machine and PyCharm on a Linux Ubuntu local machine. For Windows, a virtual environment for python using conda from Anaconda was set up to facilitate running the Streamlit app on a local host. For version control, we relied on a shared GitHub repository.
 
-**Hardware**: If relevant, list hardware resources you used.
-
-**Evaluation method**: Describe the evaluation metric(s) you used, plus any other details necessary to understand your evaluation.
+**Evaluation method**: To evaluate model performance, two metrics for topic coherence and one for topic diversity were selected.  
 
 **Experimental details**: How you ran your experiments (e.g. model configurations, learning rate, training time, etc.) 
 
@@ -85,7 +100,7 @@ knitr::include_graphics("figures/CTM.png")
 
 ***Note***: **Feel free to use some of the code from your project to explain your experiments. See example code block below.**
 
-```{python bertcnn model parameters, echo = TRUE, eval = FALSE}
+```{python ctm parameters echo = TRUE, eval = FALSE}
 OUTPUT_DIM = len(LABEL.vocab)
 DROPOUT = 0.5
 N_FILTERS = 100
