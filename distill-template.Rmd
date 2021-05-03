@@ -73,7 +73,7 @@ But how exactly does LDA find topics? The answer to that very good question is B
 
 LDA models have successfully been used in the past, such as in the Toronto Paper Matching System. [@charlin2013toronto] The task here was to match submitted papers to reviewers for peer-review journals. The challenge is the amount of both submissions and reviewers. The Toronto Paper Matching System, thus, happens to be a very similar use case to ours! The authors used reviewers' publications to elicit initial expertise scores (topics). This inspired our method! However, we decided not to consider LDA for two reasons: 1) This project is part of a "Natural Language Processing" class at Hertie, focusing on Deep Learning. 2) Bag-of-Words representations are also limited in what information they can extract. In perceiving documents as bag of words, it is unable to comprehend the semantics and context of words. The structure of sentences, e.g. the grammatical role and order of words, does not matter to Bag-of-Words.\n
 
-```{r fig7, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://dev.to/spectrumcetb/evolution-of-nlp-f54"}
+```{r fig4, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://dev.to/spectrumcetb/evolution-of-nlp-f54"}
 knitr::include_graphics("figures/meme2.jpeg")
 ```
 
@@ -90,13 +90,13 @@ Congratulations, you've mastered Natural Language Processing! Jokes aside, kudos
 
 So what did we do? Did we use BERT or Bag-of-Words? Both kinda! Contextualized Topic Model (CTM) is a novel model based on Neural-ProdLDA and Sentence-BERT. More funky terms, we know, but bear with us! Neural-ProdLDA creates a Bag-of-Words representation a document and transforms it into a continuous latent representation: imagine a collection of words being compressed into one vector. Neural-ProdLDA uses a different mathematical way to do so than standard LDA does: no worries, we will not bore you with these details. But just so you know: it achieves better topic coherence! On top of Neural-ProdLDA, we have Sentence-BERT (SBERT), which facilitates swift generation of sentence embeddings as opposed to word embeddings. The whole process is illustrated in the figure below. To summarizse, Bianchi et al. [-@bianchi2020pre] achieved increased topic coherence and overcame the limitations of sole Bag-of-Word representation by combining both pre-trained document representations and Bag-of-Words representation. 
 
-```{r fig4, eval = TRUE, echo = FALSE, out.width = '30%', fig.cap = "High-level architectural schema of a CTM"}
+```{r fig5, eval = TRUE, echo = FALSE, out.width = '30%', fig.cap = "High-level architectural schema of a CTM"}
 knitr::include_graphics("figures/CTM.png")
 ```
 
 Thus, the combination of a pre-trained document representations and  Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.
 
-```{r fig8, eval = TRUE, echo = FALSE, out.width = '0%', fig.cap = "Source: http://2.bp.blogspot.com/-kYas4c-tYY4/UMZCBgQEcJI/AAAAAAAAAQI/Ha4fDBSG52I/s1600/hot+ice.jpg"}
+```{r fig6, eval = TRUE, echo = FALSE, out.width = '0%', fig.cap = "Source: http://2.bp.blogspot.com/-kYas4c-tYY4/UMZCBgQEcJI/AAAAAAAAAQI/Ha4fDBSG52I/s1600/hot+ice.jpg"}
 knitr::include_graphics("figures/meme3.jpg")
 ```
 
@@ -141,22 +141,8 @@ ctm.fit(training_dataset)
 
 **Results**: We found that the model produces the best outputs with `num_epochs` set to 25 and `n_components` to 14. Looking at our model only, performance as expected increases as the number of training epochs increase, until it reaches the threshold of 25 epochs, after which a downwards trend can be observed. This trend is visible already for the model performance with 30 training epochs: both the average NPMI and WETC decrease, IRBO remains relatively stable.
 
-```{r}
-epochs <- list(5, 15, 25, 30, 45)
-npmi <- list(-0.017, 0.030, 0.085, 0.050, 0.055)
-wetc <- list(0.120, 0.153, 0.168, 0.162, 0.167)
-irbo <- list(0.983, 0.984, 0.983, 0.971, 0.982)
-
-
-data <- cbind(epochs, npmi, wetc, irbo)
-
-kbl(
-  data,
-  col.names = c('Epochs', 'NPMI', 'WETC', 'IRBO'),
-  caption = "Performance Metrics"
-) %>%
-  kable_styling()
-
+```{r fig7, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Bar chart: Evaluation estimates for different epochs"}
+knitr::include_graphics("figures/metrics.png")
 ```
 
 
@@ -166,7 +152,7 @@ One reason might be the fact that while the authors had more documents, their do
 
 The line chart below illustrates the relationship between the train loss and epochs. So the improvements of our model vs the number of trainings. We can see that train loss declined as the number of epochs increases. So we should have trained more then?
 
-```{r fig5, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Train Loss"}
+```{r fig8, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Train Loss"}
 knitr::include_graphics("figures/trainloss.png")
 ```
 
@@ -177,7 +163,7 @@ Not quite! Train loss is one evaluation metric, but for topic models, topic cohe
 
 Here you can see the 14 topics that were created from the training data, with their first five words respectively. We can see that almost all topics show great coherence and diversity, even when there is substantial overlap (e.g. in topic 3 and topic 13).
 
-```{r}
+```{r tab1, eval = TRUE, echo = FALSE, tab.cap="Topic Model Output"}
 top <- data.frame("Topic ID"=c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
                   "Words"=c('nsocial, social, society, entrepreneurship, needs,', 
                             'election , party, elections, voters, vote',
@@ -209,24 +195,20 @@ We can see that almost all topics show great coherence and diversity, even when 
 
 For demonstration purposes, we have additionally included some exemplary word clouds as well as the table of key words across each topic.
 
-```{r fig6, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Topic Distribution across Professors"}
+```{r fig9, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Topic Distribution across Professors"}
 knitr::include_graphics("figures/topic-prof.png")
 ```
 
 A limitation to the model's applicability is the use case of documents that are extremely short in length, varying in writing style and quality. Examples are ideas of research proposals, often consisting of only a few bullet points and not following consistent semantic structures. For instance, the model identified topic 3 from a student's thesis proposal (i.e. the test data). Topic 3 is centered around human rights and law. The text of interest, however, outlines a thesis on forecasting election results using machine learning techniques. Another sample of topic prediction on a sample supervision plan (i.e. the validation data) led to  similarly inferior results: it predicts a topic that is not contained in the topics created from the test data.
 
-```{r fig9, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Wordclouds for topics 7 and 11"}
+```{r fig10, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Wordclouds for topics 7 and 11"}
 knitr::include_graphics("figures/topic7.png")
 knitr::include_graphics("figures/topic11.png")
 ```
 
-```{r fig12, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Bar chart: Evaluation estimates for different epochs"}
-knitr::include_graphics("figures/metrics.png")
-```
-
 The heat map below shows that there is no conclusive relationship between the length of vocabulary and the topic. That would be the case, if for example, the heat map would start with light tones and end up with dark tones, indicating a positive correlation between the length of vocabulary and the topic. In other words, a higher length of vocabulary is correlated with a topic. Instead, there is little color distinction within rows, indicating that for a given topic, vocabulary length does not change much in correlation.
 
-```{r fig10, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Heatmap: topic-word matrix with  number of topics on the y-axis and length of the vocabulary on the x-axis"}
+```{r fig11, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Heatmap: topic-word matrix with  number of topics on the y-axis and length of the vocabulary on the x-axis"}
 knitr::include_graphics("figures/heatmap.png")
 ```
 
@@ -236,7 +218,7 @@ knitr::include_graphics("figures/heatmap.png")
 A main learning for us was that although algorithms generally and learning algorithms specifically hold enormous potential for a wide range of application fields and are an exciting technology to explore as a social scientist, *do not underestimate how hard it is to get good data and how much time you'll likely have to invest to clean and prepare the data you get*! To save some time, we used a precast preprocessing module and customized stop words. We could have invested far more time into data cleaning though, insofar that at the current state, it does not entirely remove non-relevant information from the training documents, such as web URL links, stylistic page information, etc. As a result, we end up with a lot of "noisy" words and vocabulary in our model that begin with "n" and are thus not regarded to be the same to identical words that do not start with a "n", i.e. "neach" and "each". We therefore recommend that future students that might want to continue in our line of work invest more time into building a more sophisticated preprocessing module that is capable to handle these issues.\n
 Having said that, it is remarkable to see how easily and swiftly Deep Learning algorithms can be implemented using existing modules and architectures. For instance, our model architecture is based on the blueprint by Bianchi et al. [-@bianchi2020pre], that was readily available on the web with detailed instructions and explanations. Thus, the bulk of the work was not actually located in the development of the model itself, but its preparation, configuration and the visualizations of its outputs.\n
 
-```{r fig11, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "https://dev.to/spectrumcetb/evolution-of-nlp-f54"}
+```{r fig12, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "https://dev.to/spectrumcetb/evolution-of-nlp-f54"}
 knitr::include_graphics("figures/meme4.jpg")
 ```
 
