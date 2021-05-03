@@ -35,7 +35,7 @@ If you've happened to come across this website, you're either a student that is 
 
 This project was inspired by the recurring challenge in the fall semester, when Hertie students and administrative staff alike have to match suitable and available supervisors to students' master theses. The task is - as you can probably imagine - very laborious. As a Hertie student, you are required to indicate three preferences of supervising professors in decreasing order of rank. But what if you have no idea? You've probably only met 5 professors, but there are 28 options out there! The agony. Worst of all? There is no good overview on the Moodle platform: you're forced to manually and individually download the supervision plan. 
 
-```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: Own work."}
+```{r fig1, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: Own work."}
 knitr::include_graphics("figures/meme1.jpg")
 ```
 
@@ -56,13 +56,13 @@ Let's say you've been tasked with sorting mail. Super tedious work. As you begin
 
 But how does a machine even comprehend text? Easy - by numbers! Every word is turned into a token, i.e. a number. We call that step "encoding". Fancy term there! Now that we've established the foundations, let's get into the nitty-gritty details!\n
 
-```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971"}
+```{r fig2, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://towardsdatascience.com/a-simple-explanation-of-the-bag-of-words-model-b88fc4f4971"}
 knitr::include_graphics("figures/bow.png")
 ```
 
 Latent Dirichlet Allocation (LDA) is a popular machine learning probabilistic algorithm used for topic modeling. The figure below illustrates how it basically works. It discovers topics and then matches these topics to documents. In the end, you get a table of documents with their proportional share to each topics. Going back to our mailbox example: let's say the first letter (document) is advertisement but there is also a bit of a reminder. Ideally, LDA would return that the document of interest is 60\% advertisement and 39\% reminder, 0.5\% bill and 0.5\% notification of changes. Why 0.5\%? That is how probability works! You can never fully rule out that something happens, you just know that it is veeeeery unlikely to happen.\n
 
-```{r, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html"}
+```{r fig3, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "Source: https://www.kdnuggets.com/2019/09/overview-topics-extraction-python-latent-dirichlet-allocation.html"}
 knitr::include_graphics("figures/lda.png")
 ```
 
@@ -83,16 +83,8 @@ Lastly, in previous stages of our work, we have also contemplated the employment
 
 CTM is based on the neural topic model Neural-ProdLDA and a contextualized document embedded representation created by Sentence-BERT (SBERT). Neural-ProdLDA trains a neural inference network to transform the Bag of Words (BoW) document representation of a given document into a continuous latent representation via the two parameters $\mu$ and $\sigma^2$ of a Gaussian distribution. Instead of using a multinomial distribution over individual words as is common in standard LDA, Neural-ProdLDA uses the weighted product of experts, leading to stark improvements in topic coherence. The continuous latent representation is then decoded and reconstructed in a BoW representation based on the Variational AutoEncoder. CTM combines Neural-ProdLDA by extending (concatenating) it with contextualized document embeddings from SBERT, which facilitates swift generation of sentence embeddings as opposed to word embeddings (see Fig. 1). On the whole, Bianchi et al. [-@bianchi2020pre] integrated contextualized document embeddings into a neural topic model to produce more coherent topics than previous neural topic models could achieve, while producing competitive results regarding topic diversity. Thus, the combination of a pre-trained document representations and  Bag-of-Words representation to increase the topic coherence appears to successfully overcome the limitation of sole Bag-of-Word (BoW) representations: the consideration of contextual information and word order.
 
-<<<<<<< Updated upstream
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "High-level architectural schema of a CTM"}
-=======
-<<<<<<< HEAD
 
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '70%', fig.cap = "High-level architectural schema of a CTM, from Bianchi et al. 2020"}
-=======
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "High-level architectural schema of a CTM"}
->>>>>>> fec2ca52f462ca3c522a29324850acf347147011
->>>>>>> Stashed changes
+```{r fig4, eval = TRUE, echo = FALSE, out.width = '50%', fig.cap = "High-level architectural schema of a CTM"}
 knitr::include_graphics("figures/CTM.png")
 ```
 ## Experiments 
@@ -100,15 +92,8 @@ knitr::include_graphics("figures/CTM.png")
 **Data**: The train data set consists of publicly available and raw academic papers written by supervisors. Due to the constraint Google Scholar imposes on web scraping, we were forced to manually download papers individually for each supervisor. The test data consists of students' individual thesis proposals, which aside from slight variation and - in contrast to the training data - follow a mostly coherent structure. Thesis proposals were donated by this year's student cohort. Supervision plans are currently used in the CTM as validation data.\n
 The unprocessed data sets are made up of individual .pdf files, which were converted into raw text individually and then aggregated into a single .csv file, entailing two columns: the first column carries the file name, the second column holds the document content as a string. However, document contents are cut off after 32,767 characters, the upper limit per cell for .csv files, which we found useful to specify directly within our convertion function. The data sets then undergo preprocessing, i.e. the removal of common and custom-defined stopwords, punctuation, and rare words. 
 
-<<<<<<< Updated upstream
 ```{python txt-csv, echo = TRUE, eval = FALSE}
-=======
-<<<<<<< HEAD
-```{r python_ctm, echo = TRUE, eval = FALSE}
-=======
-```{python txt-csv, echo = TRUE, eval = FALSE}
->>>>>>> fec2ca52f462ca3c522a29324850acf347147011
->>>>>>> Stashed changes
+
 def txt_to_csv(input_dir, output_dir, new_filename): 
   
   files = glob('/content/drive/MyDrive/ThesisAllocationSystem/' + input_dir + '/*.txt')
@@ -140,30 +125,12 @@ ctm.fit(training_dataset)
 **Results**: We found that the model produces the best outputs with `num_epochs` set to 25 and `n_components` to 14.
 
 
-
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-```{r python_ctm2, echo = TRUE, eval = FALSE}
-OUTPUT_DIM = len(LABEL.vocab)
-DROPOUT = 0.5
-N_FILTERS = 100
-FILTER_SIZES = [2,3]
-=======
->>>>>>> Stashed changes
 **Comment on quantitative results**: Are they what you expected? Better than you expected? Worse than you expected? Why do you think that is? What does this tell you about what you should do next? Including training curves might be useful to discuss whether things are training effectively.
 
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Train Loss"}
+```{r fig5, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Train Loss"}
 knitr::include_graphics("figures/trainloss.png")
 ```
-<<<<<<< Updated upstream
-=======
->>>>>>> fec2ca52f462ca3c522a29324850acf347147011
->>>>>>> Stashed changes
 
-```{r fig1, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = Topic Distribution across Professors}
-knitr::include_graphics("figures/topic-prof.png")
-```
 
 ## Analysis 
 
@@ -172,6 +139,10 @@ Your report should include some qualitative evaluation. That is, try to understa
 - Types of qualitative evaluation include: commenting on selected examples, error analysis, measuring the performance metric for certain subsets of the data, ablation studies, comparing the behaviors of two systems beyond just the performance metric, and visualizing attention distributions or other activation heatmaps.
 
 - The Practical Tips lecture notes has a detailed section on qualitative evaluation -- you may find it useful to reread it.
+
+```{r fig6, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = Topic Distribution across Professors}
+knitr::include_graphics("figures/topic-prof.png")
+```
 
 ## Conclusion(s)
 
