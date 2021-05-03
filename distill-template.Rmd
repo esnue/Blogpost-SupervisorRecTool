@@ -216,7 +216,9 @@ knitr::include_graphics("figures/topic7.png")
 knitr::include_graphics("figures/topic11.png")
 ```
 
-**table of words**
+```{r fig12, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Bar chart: Evaluation estimates for different epochs"}
+knitr::include_graphics("figures/metrics.png")
+```
 
 The heat map below shows that there is no conclusive relationship between the length of vocabulary and the topic. That would be the case, if for example, the heat map would start with light tones and end up with dark tones, indicating a positive correlation between the length of vocabulary and the topic. In other words, a higher length of vocabulary is correlated with a topic. Instead, there is little color distinction within rows, indicating that for a given topic, vocabulary length does not change much in correlation.
 

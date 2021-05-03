@@ -121,7 +121,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["bibliography.bib","distill-template_files/anchor-4.2.2/anchor.min.js","distill-template_files/bowser-1.9.3/bowser.min.js","distill-template_files/distill-2.2.21/template.v2.js","distill-template_files/header-attrs-2.6/header-attrs.js","distill-template_files/jquery-1.11.3/jquery.min.js","distill-template_files/popper-2.6.0/popper.min.js","distill-template_files/tippy-6.2.7/tippy-bundle.umd.min.js","distill-template_files/tippy-6.2.7/tippy-light-border.css","distill-template_files/tippy-6.2.7/tippy.css","distill-template_files/tippy-6.2.7/tippy.umd.min.js","distill-template_files/webcomponents-2.0.0/webcomponents.js","figures/bow.png","figures/CTM.png","figures/heatmap.png","figures/lda.png","figures/meme1.jpg","figures/meme2.jpeg","figures/meme3.jpg","figures/meme4.jpg","figures/topic-dist.png","figures/topic-prof.png","figures/topic11.png","figures/topic13.png","figures/topic7.png","figures/trainloss.png"]}
+  {"type":"character","attributes":{},"value":["bibliography.bib","distill-template_files/anchor-4.2.2/anchor.min.js","distill-template_files/bowser-1.9.3/bowser.min.js","distill-template_files/distill-2.2.21/template.v2.js","distill-template_files/header-attrs-2.6/header-attrs.js","distill-template_files/jquery-1.11.3/jquery.min.js","distill-template_files/popper-2.6.0/popper.min.js","distill-template_files/tippy-6.2.7/tippy-bundle.umd.min.js","distill-template_files/tippy-6.2.7/tippy-light-border.css","distill-template_files/tippy-6.2.7/tippy.css","distill-template_files/tippy-6.2.7/tippy.umd.min.js","distill-template_files/webcomponents-2.0.0/webcomponents.js","figures/bow.png","figures/CTM.png","figures/heatmap.png","figures/lda.png","figures/meme1.jpg","figures/meme2.jpeg","figures/meme3.jpg","figures/meme4.jpg","figures/metrics.png","figures/topic-dist.png","figures/topic-prof.png","figures/topic11.png","figures/topic13.png","figures/topic7.png","figures/trainloss.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1439,6 +1439,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
   
   <!--/radix_placeholder_distill-->
+  <script src="distill-template_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="distill-template_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="distill-template_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="distill-template_files/popper-2.6.0/popper.min.js"></script>
   <link href="distill-template_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1586,7 +1588,102 @@ Figure 6: Source: <a href="http://2.bp.blogspot.com/-kYas4c-tYY4/UMZCBgQEcJI/AAA
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a>ctm.fit(training_dataset)</span></code></pre></div>
 </div>
-<p><strong>Results</strong>: We found that the model produces the best outputs with <code>num_epochs</code> set to 25 and <code>n_components</code> to 14.</p>
+<p><strong>Results</strong>: We found that the model produces the best outputs with <code>num_epochs</code> set to 25 and <code>n_components</code> to 14. Looking at our model only, performance as expected increases as the number of training epochs increase, until it reaches the threshold of 25 epochs, after which a downwards trend can be observed. This trend is visible already for the model performance with 30 training epochs: both the average NPMI and WETC decrease, IRBO remains relatively stable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1: </span>Performance Metrics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Epochs
+</th>
+<th style="text-align:left;">
+NPMI
+</th>
+<th style="text-align:left;">
+WETC
+</th>
+<th style="text-align:left;">
+IRBO
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-0.017
+</td>
+<td style="text-align:left;">
+0.12
+</td>
+<td style="text-align:left;">
+0.983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+0.03
+</td>
+<td style="text-align:left;">
+0.153
+</td>
+<td style="text-align:left;">
+0.984
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+0.085
+</td>
+<td style="text-align:left;">
+0.168
+</td>
+<td style="text-align:left;">
+0.983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+0.05
+</td>
+<td style="text-align:left;">
+0.162
+</td>
+<td style="text-align:left;">
+0.971
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+0.055
+</td>
+<td style="text-align:left;">
+0.167
+</td>
+<td style="text-align:left;">
+0.982
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><strong>Comment on quantitative results</strong>: Are we happy with the findings! Definitely! The model performance exceeded our expectations. Why is that? Because Natural Language Processing models normally require a lot of data (at least thousands) to work well, but we only had exactly 809 documents for the training. Despite that, we saw performance numbers that surpassed the performance levels achieved by the authors of the model. We certainly did not expect that!</p>
 <p>One reason might be the fact that while the authors had more documents, their documents were rather short in size. We used academic papers which can be pretty long, whereas Bianchi et al used Twitter tweets and news snippets and posts.</p>
 <p>The line chart below illustrates the relationship between the train loss and epochs. So the improvements of our model vs the number of trainings. We can see that train loss declined as the number of epochs increases. So we should have trained more then?</p>
@@ -1600,6 +1697,138 @@ Figure 7: Train Loss
 </div>
 <h2 id="analysis">Analysis</h2>
 <p>Not quite! Train loss is one evaluation metric, but for topic models, topic coherence is much more important! Above, we’ve introduced some evaluation metrics of relevance to our model. Looking at these, we found that up to 25 epochs, topic coherence increased. However, beyond 25 epochs, topic coherence worsened. Why is that? Probably due to overfitting! Instead of identifying a general pattern, the model decides to just start learning the distributions by heart! That’s no good because then, it performs badly on unseen data. Going back to our mailbox example: imagine you now know how advertisement from Amazon looks like, so as soon as you see the Amazon logo, you just categorize it as advertisement. But what if the next letter is advertisement from Windows? You’ve only learned to recognize advertisement by the Amazon logo, so now you’re lost as to how to recognize advertisement from other (unseen) sources!</p>
+<p>Here you can see the 14 topics that were created from the training data, with their first five words respectively. We can see that almost all topics show great coherence and diversity, even when there is substantial overlap (e.g. in topic 3 and topic 13).</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 2: </span>First Five Words per Topic
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Topic ID
+</th>
+<th style="text-align:left;">
+Topic Words
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+nsocial, social, society, entrepreneurship, needs,
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+election , party, elections, voters, vote
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+germany, employment, german, children, age
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+rights, human, law, states, asylum
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+information, conflict, nto, group, behaviour
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+firms, firm, tax, average, bank
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+price, countries, climate, energy, policy
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+organizations, business, social, entrepreneurship, nsocial
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+states, state, european, political, eu
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+robot, robots, behaviour, group, intelligence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+energy, cost, markets, high, costs
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+political, public, government, parties, policy
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+ngiven, always, extend, codes, constant
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+eds, refugees, neuropean, law, ninternational
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The bar chart below illustrates the distribution of topics across professors. For example, Başak Çalı predominantly covers topic 3, whereas topic 10 appears to be the main domain of Lion Hirth. In the following, we have included some exemplary word clouds as well as the table of key words across each topic.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:fig6"></span>
@@ -1623,13 +1852,20 @@ Figure 10: Wordclouds for topics 7 and 11
 </p>
 </div>
 </div>
-<p><strong>table of words</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:fig12"></span>
+<img src="figures/metrics.png" alt="Bar chart: Evaluation estimates for different epochs" width="100%" />
+<p class="caption">
+Figure 11: Bar chart: Evaluation estimates for different epochs
+</p>
+</div>
+</div>
 <p>The heat map below shows that there is no conclusive relationship between the length of vocabulary and the topic. That would be the case, if for example, the heat map would start with light tones and end up with dark tones, indicating a positive correlation between the length of vocabulary and the topic. In other words, a higher length of vocabulary is correlated with a topic. Instead, there is little color distinction within rows, indicating that for a given topic, vocabulary length does not change much in correlation.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:fig10"></span>
 <img src="figures/heatmap.png" alt="Heatmap: topic-word matrix with  number of topics on the y-axis and length of the vocabulary on the x-axis" width="100%" />
 <p class="caption">
-Figure 11: Heatmap: topic-word matrix with number of topics on the y-axis and length of the vocabulary on the x-axis
+Figure 12: Heatmap: topic-word matrix with number of topics on the y-axis and length of the vocabulary on the x-axis
 </p>
 </div>
 </div>
@@ -1640,14 +1876,14 @@ Figure 11: Heatmap: topic-word matrix with number of topics on the y-axis and le
 <div class="figure"><span id="fig:fig11"></span>
 <img src="figures/meme4.jpg" alt="https://dev.to/spectrumcetb/evolution-of-nlp-f54" width="100%" />
 <p class="caption">
-Figure 12: <a href="https://dev.to/spectrumcetb/evolution-of-nlp-f54" class="uri">https://dev.to/spectrumcetb/evolution-of-nlp-f54</a>
+Figure 13: <a href="https://dev.to/spectrumcetb/evolution-of-nlp-f54" class="uri">https://dev.to/spectrumcetb/evolution-of-nlp-f54</a>
 </p>
 </div>
 </div>
 <p>Further steps for the future could include using different training datasets of comparable length to the original study. The initial goal of this project was to develop a recommendation system for students based on their thesis proposals. This was not possible due to quality constraints for this data type, as previously mentioned. Ideally, we would need to standardize research proposals such as that complete sentences and a minimum word count would be required. However, cost-benefit ratio for students in such a scenario would needed to be considered. If the model had indeed been able to produce reasonable results in terms of topic prediction, we would have readily implemented a similar architecture as employed by last semester’s students. Consequently, students would have been able to submit their thesis proposal to the recommendation system to get a list of recommended professors that could proven helpful for the choice of the supervisors. Having said that, if such data should become available in the future, it would be interesting to see how the model performs with respect to matching the thesis proposals to professors.</p>
 <p>Moreover, due to time constraints, we were unable to test different vocabulary length settings. It might, however, be insightful to see whether the evaluation measures indeed worsen as the vocabulary length is increased, given the technical jargon commonly used in academic papers and its specificity to different academic disciplines.</p>
 <h2 id="acknowledgments">Acknowledgments</h2>
-<p>As noted repeatedly in the paper, our project is inspired by last semester’s students from the class “Python for Data Scientists”. We are grateful to their groundwork and the inspiration they provided us. Throughout the project, we had several guiding meetings with Slava Jankin who, though being a demanding teacher, never ceased to encourage us to dive deeper, experiment more, and give our best. We are also very grateful to Huy Ngoc Dang who amazed us by his willingness to instruct us about different coding challenges, such as visualization or Streamlit implementation, as well as his devotion to the success of our project. We also want to thank Curricular Affairs and all involved members of the school administration who facilitated access to this year’s cohorts research proposals (anonymized and voluntary, of course!) for testing purposes. Lastly, our research project would not have been possible without the remarkable work of Bianchi et al. <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span>. Their documentation and instructions were of paramount importance to this project and present a top-notch case of collaborative open-source academic work.</p>
+<p>As previously mentioned, our project is inspired by last semester’s students from the class “Python for Data Scientists”. We are grateful to their groundwork and the inspiration they provided us. Throughout the project, we had several guiding meetings with Slava Jankin who, though being a demanding teacher, never ceased to encourage us to dive deeper, experiment more, and give our best. We are also very grateful to Huy Ngoc Dang who amazed us by his willingness to instruct us about different coding challenges, such as visualization or Streamlit implementation, as well as his devotion to the success of our project. We also want to thank Curricular Affairs and all involved members of the school administration who facilitated access to this year’s cohorts research proposals (anonymized and voluntary, of course!) for testing purposes. Lastly, our research project would not have been possible without the remarkable work of Bianchi et al. <span class="citation" data-cites="bianchi2020pre">(<a href="#ref-bianchi2020pre" role="doc-biblioref">2020</a>)</span>. Their documentation and instructions were of paramount importance to this project and present a top-notch case of collaborative open-source academic work.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-bianchi2020pre">
